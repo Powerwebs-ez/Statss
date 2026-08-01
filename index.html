@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Powerrr666yyy | Command Center</title>
-    <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Orbitron:wght@500;700;900&family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg-deep: #07030f;
@@ -461,6 +461,76 @@
             text-shadow: 0 0 8px rgba(255, 85, 0, 0.5);
         }
 
+        .settings-container, .hardware-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .setting-box {
+            background: rgba(12, 6, 25, 0.45);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 14px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .setting-box h3 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.9rem;
+            color: #f0c2ff;
+            letter-spacing: 1px;
+        }
+
+        .setting-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+        .setting-val-text {
+            color: #fff;
+            font-weight: 600;
+        }
+
+        .crosshair-code {
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(191, 0, 255, 0.4);
+            padding: 10px;
+            border-radius: 8px;
+            font-family: monospace;
+            font-size: 0.8rem;
+            color: #f0c2ff;
+            word-break: break-all;
+        }
+
+        .copy-trigger, .download-trigger {
+            background: rgba(191, 0, 255, 0.2);
+            border: 1px solid var(--accent-neon);
+            color: #f0c2ff;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            cursor: crosshair;
+            transition: all 0.2s;
+            text-transform: uppercase;
+            align-self: flex-start;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+        .copy-trigger:hover, .download-trigger:hover {
+            background: var(--accent-neon);
+            color: #07030f;
+            box-shadow: 0 0 20px var(--accent-glow);
+        }
+
         #matrix-canvas {
             position: fixed;
             top: 0; left: 0;
@@ -473,58 +543,34 @@
         #matrix-canvas.active {
             opacity: 0.25;
         }
-
-        /* --- ERŐSÍTETT EREDETI ATOMIC DROP EFFEKT (NINCS FEKETE HÁTTÉR) --- */
-        #atomic-text {
+    
+        /* --- FELCSAVART, ERŐSÍTETT BASSZUS / LÖKÉS EFFEKT --- */
+        @keyframes bassPulseTurbo {
+            0% { transform: scale(1) rotate(0deg); filter: brightness(1) contrast(1); }
+            15% { transform: scale(1.08) rotate(-1deg); filter: brightness(1.8) contrast(1.3) drop-shadow(0 0 50px var(--accent-neon)); }
+            35% { transform: scale(0.95) rotate(1deg); filter: brightness(0.8) contrast(0.9); }
+            60% { transform: scale(1.05) rotate(-0.5deg); filter: brightness(1.5) contrast(1.2) drop-shadow(0 0 30px var(--secondary-neon)); }
+            100% { transform: scale(1) rotate(0deg); filter: brightness(1) contrast(1); }
+        }
+        .bass-drop-active {
+            animation: bassPulseTurbo 0.5s cubic-bezier(0.15, 1.1, 0.3, 1);
+        }
+        
+        @keyframes flashOverlayTurbo {
+            0% { background: radial-gradient(circle, rgba(255,0,127,0.7) 0%, rgba(191,0,255,0.5) 50%, rgba(0,0,0,0.8) 100%); }
+            100% { background: rgba(191, 0, 255, 0); }
+        }
+        .flash-screen {
             position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%) scale(0.2);
-            font-family: 'Creepster', cursive, sans-serif;
-            font-size: 13rem; /* Megnövelt méret */
-            color: #ffb3ff;
-            text-transform: uppercase;
-            letter-spacing: 30px;
-            transform-origin: center;
-            z-index: 10000;
-            opacity: 0;
+            top: 0; left: 0; width: 100vw; height: 100vh;
             pointer-events: none;
-            white-space: nowrap;
-            text-shadow: 0 0 20px rgba(191, 0, 255, 1), 
-                         0 0 50px rgba(255, 0, 127, 1),
-                         0 0 90px rgba(191, 0, 255, 0.9),
-                         5px 5px 0px #000;
+            z-index: 998;
+            animation: flashOverlayTurbo 0.6s ease-out forwards;
         }
 
-        @keyframes horrorPopWideStrong {
-            0% {
-                transform: translate(-50%, -50%) scale(0.05) scaleX(1.8) skewX(-25deg);
-                opacity: 0;
-                filter: blur(20px);
-            }
-            35% {
-                opacity: 1;
-                filter: blur(0px);
-            }
-            65% {
-                transform: translate(-50%, -50%) scale(1.35) scaleX(1.4) skewX(12deg);
-            }
-            100% {
-                transform: translate(-50%, -50%) scale(1.1) scaleX(1.25) skewX(0deg);
-                opacity: 1;
-                filter: blur(0px);
-            }
-        }
-
-        .show-atomic {
-            animation: horrorPopWideStrong 0.5s cubic-bezier(0, 2.2, 1, 1) forwards;
-        }
     </style>
 </head>
 <body>
-
-    <!-- ATOMIC felirat (fekete lyuk overlay eltávolítva) -->
-    <div id="atomic-text">ATOMIC</div>
 
     <div class="gif-background">
         <img src="atomic.gif" alt="Atomic Background">
@@ -705,7 +751,7 @@
             music.volume = val;
         }
 
-        let atomicDropTriggered = false;
+        let bassHitTriggered = false;
         
         music.addEventListener('timeupdate', () => {
             if (!isNaN(music.duration)) {
@@ -716,27 +762,30 @@
             }
 
             if (music.currentTime < 17) {
-                atomicDropTriggered = false;
+                bassHitTriggered = false;
             }
 
-            if (!atomicDropTriggered && music.currentTime >= 18.0 && music.currentTime < 18.5) {
-                atomicDropTriggered = true;
-                triggerAtomicDropEffect();
+            if (!bassHitTriggered && music.currentTime >= 18.0 && music.currentTime < 18.5) {
+                bassHitTriggered = true;
+                triggerBassDropEffect();
             }
         });
 
-        // --- ERŐSÍTETT EREDETI ATOMIC DROP LOGIKA (FEKETE HÁTTÉR NÉLKÜL) ---
-        const atomicText = document.getElementById('atomic-text');
+        function triggerBassDropEffect() {
+            const container = document.querySelector('.dashboard-container');
+            if (container) {
+                container.classList.add('bass-drop-active');
+                setTimeout(() => {
+                    container.classList.remove('bass-drop-active');
+                }, 500);
+            }
 
-        function triggerAtomicDropEffect() {
-            atomicText.classList.remove('show-atomic');
-            void atomicText.offsetWidth; // Reflow kényszerítése az animáció újraincidentálásához
-            atomicText.classList.add('show-atomic');
-
-            // Automatikus eltűnés az animáció lefutása után (0.7 másodperc múlva)
+            const flash = document.createElement('div');
+            flash.className = 'flash-screen';
+            document.body.appendChild(flash);
             setTimeout(() => {
-                atomicText.classList.remove('show-atomic');
-            }, 700);
+                flash.remove();
+            }, 600);
         }
 
         function seekAudio(e) {
@@ -818,36 +867,208 @@
         function startMatrixRain() {
             matrixCanvas.width = window.innerWidth;
             matrixCanvas.height = window.innerHeight;
-            const characters = "01ABCDEFGHIJKLMNOPQRSTUVWXYZ@#$*&";
-            const fontSize = 14;
+            const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%&*';
+            const fontSize = 16;
             const columns = matrixCanvas.width / fontSize;
-            const drops = [];
-            for (let i = 0; i < columns; i++) {
-                drops[i] = 1;
-            }
+            const rainDrops = [];
+            for (let x = 0; x < columns; x++) rainDrops[x] = 1;
+
             matrixInterval = setInterval(() => {
-                mCtx.fillStyle = "rgba(7, 3, 15, 0.08)";
+                mCtx.fillStyle = 'rgba(7, 3, 15, 0.05)';
                 mCtx.fillRect(0, 0, matrixCanvas.width, matrixCanvas.height);
-                mCtx.fillStyle = "#bf00ff";
-                mCtx.font = fontSize + "px monospace";
-                for (let i = 0; i < drops.length; i++) {
-                    const text = characters.charAt(Math.floor(Math.random() * characters.length));
-                    mCtx.fillText(text, i * fontSize, drops[i] * fontSize);
-                    if (drops[i] * fontSize > matrixCanvas.height && Math.random() > 0.975) {
-                        drops[i] = 0;
+                mCtx.fillStyle = '#bf00ff';
+                mCtx.font = `${fontSize}px monospace`;
+
+                for (let i = 0; i < rainDrops.length; i++) {
+                    const text = alphabet.charAt(Math.floor(Math.random() * alphabet.length));
+                    mCtx.fillText(text, i * fontSize, rainDrops[i] * fontSize);
+                    if (rainDrops[i] * fontSize > matrixCanvas.height && Math.random() > 0.975) {
+                        rainDrops[i] = 0;
                     }
-                    drops[i]++;
+                    rainDrops[i]++;
                 }
             }, 30);
         }
 
-        function switchView(viewName, event) {
-            document.querySelectorAll('.nav-btn').forEach(b => {
-                if(!b.textContent.includes('Matrix')) b.classList.remove('active');
+        function switchView(viewType, event) {
+            const buttons = document.querySelectorAll('.nav-btn');
+            buttons.forEach(btn => {
+                if(!btn.textContent.includes('Matrix')) btn.classList.remove('active');
             });
-            if(event && !event.target.textContent.includes('Matrix')) {
-                event.target.classList.add('active');
+            if(!event.target.textContent.includes('Matrix')) event.target.classList.add('active');
+
+            const viewTitle = document.getElementById('view-title');
+            const viewContent = document.getElementById('view-content');
+
+            if (viewType === 'stats') {
+                viewTitle.innerHTML = "<span>⚡</span> Primary Statistics & Overview";
+                viewContent.innerHTML = `
+                    <div class="stats-grid-main">
+                        <div class="stat-card">
+                            <div class="card-title-bar">
+                                <span>STEAM &bull; PowerrrGETSMURF</span>
+                            </div>
+                            <div class="card-metrics-grid">
+                                <div class="metric-box"><span class="metric-label">CS FRIENDCODE</span><span class="metric-value">-</span></div>
+                                <div class="metric-box"><span class="metric-label">XP LEVEL</span><span class="metric-value">20</span></div>
+                                <div class="metric-box"><span class="metric-label">REGISTERED</span><span class="metric-value">May 25, 2026</span></div>
+                                <div class="metric-box"><span class="metric-label">PLAYTIME</span><span class="metric-value">140h</span></div>
+                                <div class="metric-box" style="grid-column: span 2;"><span class="metric-label">COMMENDATIONS</span><span class="metric-value">14 😊 15 👑 🎓</span></div>
+                            </div>
+                        </div>
+
+                        <div class="stat-card">
+                            <div class="card-title-bar">
+                                <span>CORE METRICS</span>
+                            </div>
+                            <div class="card-metrics-grid cols-3" style="margin-bottom: 12px;">
+                                <div class="metric-box"><span class="metric-label">AIM</span><span class="metric-value">89.0</span></div>
+                                <div class="metric-box"><span class="metric-label">CLUTCH</span><span class="metric-value neon-purple">+11.1</span></div>
+                                <div class="metric-box"><span class="metric-label">RATING</span><span class="metric-value neon-purple">+1.1</span></div>
+                                <div class="metric-box"><span class="metric-label">WINRATE</span><span class="metric-value">55%</span></div>
+                                <div class="metric-box"><span class="metric-label">UTILITY</span><span class="metric-value">40.1</span></div>
+                                <div class="metric-box"><span class="metric-label">OPENING</span><span class="metric-value neon-purple">-0.9</span></div>
+                            </div>
+                            <div class="card-metrics-grid cols-3">
+                                <div class="metric-box"><span class="metric-label">PARTY</span><span class="metric-value">2.33</span></div>
+                                <div class="metric-box"><span class="metric-label">MATCHES</span><span class="metric-value">55</span></div>
+                                <div class="metric-box"><span class="metric-label">KD</span><span class="metric-value">1.31</span></div>
+                            </div>
+                        </div>
+
+                        <div class="stat-card faceit-highlight" style="grid-column: 1 / -1;">
+                            <div class="card-title-bar">
+                                <span>FACEIT &bull; -</span>
+                                <span style="font-size: 0.65rem; background: rgba(191,0,255,0.2); padding: 2px 8px; border-radius: 4px; color: #f0c2ff; border: 1px solid var(--accent-neon);">super_match</span>
+                            </div>
+                            <div class="card-metrics-grid cols-3" style="margin-bottom: 15px;">
+                                <div class="metric-box"><span class="metric-label">REGISTERED</span><span class="metric-value">Jul 08, 2025</span></div>
+                                <div class="metric-box"><span class="metric-label">ELO</span><span class="metric-value neon-orange">2231 🟠</span></div>
+                                <div class="metric-box"><span class="metric-label">PEAK ELO</span><span class="metric-value neon-orange">2342 🟠</span></div>
+                                <div class="metric-box"><span class="metric-label">WINRATE</span><span class="metric-value">76.34%</span></div>
+                                <div class="metric-box"><span class="metric-label">HS%</span><span class="metric-value">87%</span></div>
+                                <div class="metric-box"><span class="metric-label">ADR</span><span class="metric-value">86</span></div>
+                            </div>
+                            <div class="card-metrics-grid cols-3">
+                                <div class="metric-box"><span class="metric-label">CLUTCH 1V1/2</span><span class="metric-value">40% / 19%</span></div>
+                                <div class="metric-box"><span class="metric-label">MATCHES</span><span class="metric-value">97</span></div>
+                                <div class="metric-box"><span class="metric-label">KD</span><span class="metric-value">1.2</span></div>
+                                <div class="metric-box"><span class="metric-label">UDR</span><span class="metric-value">2.4</span></div>
+                                <div class="metric-box"><span class="metric-label">RECENT</span><span class="metric-value" style="color: #f0c2ff; letter-spacing: 2px;">LLLWL</span></div>
+                                <div class="metric-box"><span class="metric-label">LAST MATCH</span><span class="metric-value">Jul 28, 2026</span></div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            } else if (viewType === 'settings') {
+                viewTitle.innerHTML = "<span>⚙️</span> Player Settings & Setup";
+                viewContent.innerHTML = `
+                    <div class="settings-container">
+                        <div class="setting-box">
+                            <h3>Mouse & Display</h3>
+                            <div class="setting-row"><span>DPI:</span><span class="setting-val-text">800</span></div>
+                            <div class="setting-row"><span>Sensitivity:</span><span class="setting-val-text">1.28</span></div>
+                            <div class="setting-row"><span>Resolution:</span><span class="setting-val-text">1280x960</span></div>
+                            <div class="setting-row"><span>Aspect Ratio:</span><span class="setting-val-text">4:3 Stretched</span></div>
+                        </div>
+                        <div class="setting-box">
+                            <h3>Crosshair Code</h3>
+                            <div class="crosshair-code" id="ch-text">CSGO-JaEHu-LMuQP-8jUiN-3Xsbf-S5LsE</div>
+                            <button class="copy-trigger" onclick="copyCrosshair()">Copy Code</button>
+                        </div>
+                        <div class="setting-box" style="grid-column: 1 / -1;">
+                            <h3>CS2 Config (.cfg) Download</h3>
+                            <div class="setting-row"><span>Includes all custom binds, sensitivity, and game preferences:</span></div>
+                            <div class="crosshair-code" style="max-height: 100px; overflow-y: auto;">
+sensitivity "1.28"
+zoom_sensitivity_ratio "1.0"
+m_rawinput "1"
+fps_max "400"
+bind "MOUSE1" "+attack"
+bind "SPACE" "+jump"
+bind "CTRL" "+duck"
+            </div>
+                            <button class="download-trigger" onclick="downloadConfig()">Download CFG File</button>
+                        </div>
+                    </div>
+                `;
+            } else if (viewType === 'peripherals') {
+                viewTitle.innerHTML = "<span>🖱️</span> Peripherals Gear";
+                viewContent.innerHTML = `
+                    <div class="hardware-container">
+                        <div class="setting-box">
+                            <h3>Mouse</h3>
+                            <div class="setting-row"><span class="setting-val-text">LOGITECH PRO X2 SUPERSTRIKE LIGHTSPEED</span></div>
+                        </div>
+                        <div class="setting-box">
+                            <h3>Keyboard</h3>
+                            <div class="setting-row"><span class="setting-val-text">Apex Pro TKL</span></div>
+                        </div>
+                        <div class="setting-box">
+                            <h3>Headset</h3>
+                            <div class="setting-row"><span class="setting-val-text">Hyper X cloud II</span></div>
+                        </div>
+                        <div class="setting-box">
+                            <h3>Monitor</h3>
+                            <div class="setting-row"><span class="setting-val-text">Asus ROG Strix Pulsar XG27AQNGV</span></div>
+                        </div>
+                    </div>
+                `;
+            } else if (viewType === 'pc') {
+                viewTitle.innerHTML = "<span>💻</span> PC Rig Hardware";
+                viewContent.innerHTML = `
+                    <div class="hardware-container">
+                        <div class="setting-box">
+                            <h3>Processor (CPU)</h3>
+                            <div class="setting-row"><span class="setting-val-text">Ryzen 9 9950X3D</span></div>
+                        </div>
+                        <div class="setting-box">
+                            <h3>Graphics (GPU)</h3>
+                            <div class="setting-row"><span class="setting-val-text">RTX 5090</span></div>
+                        </div>
+                        <div class="setting-box">
+                            <h3>Memory (RAM)</h3>
+                            <div class="setting-row"><span class="setting-val-text">KINGSTON FURY Memória DDR5 32GB 6000MT/s CL36</span></div>
+                        </div>
+                        <div class="setting-box">
+                            <h3>Case</h3>
+                            <div class="setting-row"><span class="setting-val-text">CORSAIR iCUE 5000X RGB QL Edition Mid-Tower ATX Case — True White</span></div>
+                        </div>
+                    </div>
+                `;
             }
+        }
+
+        function copyCrosshair() {
+            const code = "CSGO-JaEHu-LMuQP-8jUiN-3Xsbf-S5LsE";
+            navigator.clipboard.writeText(code).then(() => {
+                const btn = document.querySelector('.copy-trigger');
+                btn.textContent = "Copied!";
+                setTimeout(() => btn.textContent = "Copy Code", 2000);
+            });
+        }
+
+        function downloadConfig() {
+            const cfgContent = `// Powerrr666yyy CS2 Config
+sensitivity "1.28"
+zoom_sensitivity_ratio "1.0"
+m_rawinput "1"
+fps_max "400"
+bind "MOUSE1" "+attack"
+bind "SPACE" "+jump"
+bind "CTRL" "+duck"
+bind "SHIFT" "+sprint"
+echo "Powerrr666yyy CFG Loaded Successfully!"
+`;
+            const blob = new Blob([cfgContent], { type: 'text/plain' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'powerrr_config.cfg';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            window.URL.revokeObjectURL(url);
         }
     </script>
 </body>
