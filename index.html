@@ -13,7 +13,6 @@
             --secondary-neon: #ff007f;
             --secondary-glow: rgba(255, 0, 127, 0.45);
             --faceit-orange: #ff5500;
-            /* Jelentősen átlátszóbb üveg, hogy átsejlenék a háttér */
             --glass-bg: rgba(10, 5, 20, 0.50);
             --glass-border: rgba(191, 0, 255, 0.35);
             --text-main: #f5f0f8;
@@ -49,7 +48,6 @@
             padding: 30px;
         }
 
-        /* GIF Background: Enyhébb blur és világosabb beállítás, hogy tisztán átlátszódjon */
         .gif-background {
             position: fixed;
             top: 0;
@@ -65,13 +63,11 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            /* Csökkentett blur és sötétítés, hogy a háttér vibrálása élvezhető maradjon */
             filter: blur(5px) brightness(0.65) saturate(1.3) contrast(1.1);
             transform: scale(1.05);
             image-rendering: auto;
         }
 
-        /* Scanline overlay */
         body::before {
             content: " ";
             display: block;
@@ -104,7 +100,6 @@
             z-index: 1;
         }
 
-        /* Main Dashboard Grid layout */
         .dashboard-container {
             max-width: 1400px;
             margin: 0 auto;
@@ -121,10 +116,9 @@
             }
         }
 
-        /* Left Sidebar / Profile & Audio Hub */
         .sidebar-panel {
             background: var(--glass-bg);
-            backdrop-filter: blur(14px); /* Finomabb üveghatás, ami átengedi a fényt */
+            backdrop-filter: blur(14px);
             -webkit-backdrop-filter: blur(14px);
             border: 1px solid var(--glass-border);
             border-radius: 20px;
@@ -188,7 +182,6 @@
             letter-spacing: 1px;
         }
 
-        /* Compact Command Player */
         .command-player {
             background: rgba(10, 5, 20, 0.45);
             backdrop-filter: blur(8px);
@@ -302,7 +295,6 @@
             box-shadow: 0 0 8px var(--accent-neon);
         }
 
-        /* Navigation Menu inside Sidebar */
         .sidebar-nav {
             display: flex;
             flex-direction: column;
@@ -338,7 +330,6 @@
             color: var(--accent-neon);
         }
 
-        /* Main Content Workspace */
         .workspace {
             display: flex;
             flex-direction: column;
@@ -386,14 +377,12 @@
             gap: 10px;
         }
 
-        /* Grid Layout for Stats Cards */
         .stats-grid-main {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 20px;
         }
 
-        /* Áttetszőbb, üveghatású kártyák, hogy a háttér átköszönjön rajtuk */
         .stat-card {
             background: rgba(12, 6, 25, 0.45);
             backdrop-filter: blur(8px);
@@ -411,7 +400,6 @@
             transform: translateY(-2px);
         }
 
-        /* FACEIT kártya: lila/neon stílusú, piros kiemelés nélkül */
         .stat-card.faceit-highlight {
             border-color: rgba(191, 0, 255, 0.45);
             background: linear-gradient(135deg, rgba(12, 6, 25, 0.5) 0%, rgba(40, 10, 60, 0.3) 100%);
@@ -473,7 +461,6 @@
             text-shadow: 0 0 8px rgba(255, 85, 0, 0.5);
         }
 
-        /* Settings view specific styles */
         .settings-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -541,7 +528,6 @@
             box-shadow: 0 0 20px var(--accent-glow);
         }
 
-        /* Matrix Canvas */
         #matrix-canvas {
             position: fixed;
             top: 0; left: 0;
@@ -558,7 +544,6 @@
 </head>
 <body>
 
-    <!-- Atomic GIF Background -->
     <div class="gif-background">
         <img src="atomic.gif" alt="Atomic Background">
     </div>
@@ -566,10 +551,11 @@
     <div class="spotlight" id="spotlight"></div>
     <canvas id="bg-canvas"></canvas>
     <canvas id="matrix-canvas"></canvas>
+    
+    <!-- Az új zene.mp3 automatikusan betöltődik -->
     <audio id="bg-music" src="zene.mp3" loop autoplay></audio>
 
     <div class="dashboard-container">
-        <!-- LEFT SIDEBAR: PROFILE & MUSIC & NAV -->
         <aside class="sidebar-panel">
             <div class="profile-section">
                 <div class="profile-avatar-wrapper">
@@ -584,7 +570,6 @@
                 </div>
             </div>
 
-            <!-- Compact Player -->
             <div class="command-player" id="player-box">
                 <div class="player-top-row">
                     <div class="eq-visualizer">
@@ -610,7 +595,6 @@
                 </div>
             </div>
 
-            <!-- Navigation Links -->
             <div class="sidebar-nav">
                 <button class="nav-btn active" onclick="switchView('stats', event)">⚡ Command Stats</button>
                 <button class="nav-btn" onclick="switchView('settings', event)">⚙️ Configuration</button>
@@ -618,7 +602,6 @@
             </div>
         </aside>
 
-        <!-- RIGHT WORKSPACE -->
         <main class="workspace">
             <div class="workspace-panel" id="workspace-panel">
                 <div class="panel-header">
@@ -627,9 +610,7 @@
                 </div>
 
                 <div id="view-content">
-                    <!-- STATS VIEW -->
                     <div class="stats-grid-main">
-                        <!-- STEAM CARD -->
                         <div class="stat-card">
                             <div class="card-title-bar">
                                 <span>STEAM &bull; PowerrrGETSMURF</span>
@@ -643,7 +624,6 @@
                             </div>
                         </div>
 
-                        <!-- PERFORMANCE CARD -->
                         <div class="stat-card">
                             <div class="card-title-bar">
                                 <span>CORE METRICS</span>
@@ -663,7 +643,6 @@
                             </div>
                         </div>
 
-                        <!-- FACEIT CARD -->
                         <div class="stat-card faceit-highlight" style="grid-column: 1 / -1;">
                             <div class="card-title-bar">
                                 <span>FACEIT &bull; -</span>
@@ -693,7 +672,6 @@
     </div>
 
     <script>
-        // Spotlight tracking
         const spotlight = document.getElementById('spotlight');
         window.addEventListener('mousemove', (e) => {
             const x = (e.clientX / window.innerWidth) * 100;
@@ -702,7 +680,6 @@
             spotlight.style.setProperty('--mouse-y', `${y}%`);
         });
 
-        // Audio Player Controls
         const music = document.getElementById('bg-music');
         const playPauseBtn = document.getElementById('play-pause-btn');
         const progressBar = document.getElementById('progress-bar');
@@ -773,7 +750,6 @@
             return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
         }
 
-        // Background Particles Canvas
         const canvas = document.getElementById('bg-canvas');
         const ctx = canvas.getContext('2d');
         let width = canvas.width = window.innerWidth;
@@ -809,7 +785,6 @@
         }
         animateParticles();
 
-        // Matrix Rain Effect
         const matrixCanvas = document.getElementById('matrix-canvas');
         const mCtx = matrixCanvas.getContext('2d');
         let matrixActive = false;
@@ -858,7 +833,6 @@
             }, 30);
         }
 
-        // View Switcher logic (Stats / Settings)
         function switchView(viewType, event) {
             const buttons = document.querySelectorAll('.nav-btn');
             buttons.forEach(btn => {
