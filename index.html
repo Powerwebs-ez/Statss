@@ -7,16 +7,16 @@
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-deep: #05020a;
-            --accent-neon: #00f0ff;
-            --accent-glow: rgba(0, 240, 255, 0.35);
-            --secondary-neon: #ff0055;
-            --secondary-glow: rgba(255, 0, 85, 0.35);
+            --bg-deep: #07030f;
+            --accent-neon: #bf00ff;
+            --accent-glow: rgba(191, 0, 255, 0.45);
+            --secondary-neon: #ff007f;
+            --secondary-glow: rgba(255, 0, 127, 0.45);
             --faceit-orange: #ff5500;
-            --glass-bg: rgba(12, 8, 22, 0.85);
-            --glass-border: rgba(0, 240, 255, 0.2);
-            --text-main: #f0f0f5;
-            --text-muted: #8a85a0;
+            --glass-bg: rgba(18, 10, 30, 0.85);
+            --glass-border: rgba(191, 0, 255, 0.25);
+            --text-main: #f5f0f8;
+            --text-muted: #9c8aa7;
         }
 
         * {
@@ -54,7 +54,7 @@
             display: block;
             position: fixed;
             top: 0; left: 0; bottom: 0; right: 0;
-            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(0, 240, 255, 0.02), rgba(255, 0, 85, 0.01), rgba(0, 240, 255, 0.02));
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(191, 0, 255, 0.02), rgba(255, 0, 127, 0.01), rgba(191, 0, 255, 0.02));
             z-index: 999;
             background-size: 100% 3px, 6px 100%;
             pointer-events: none;
@@ -68,7 +68,7 @@
             height: 100vh;
             pointer-events: none;
             z-index: 1;
-            background: radial-gradient(circle 600px at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(0, 240, 255, 0.06), transparent 70%);
+            background: radial-gradient(circle 600px at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(191, 0, 255, 0.08), transparent 70%);
         }
 
         #bg-canvas {
@@ -153,9 +153,9 @@
         }
 
         .badge {
-            background: rgba(0, 240, 255, 0.08);
+            background: rgba(191, 0, 255, 0.1);
             border: 1px solid var(--accent-neon);
-            color: var(--accent-neon);
+            color: #e2a1ff;
             padding: 5px 12px;
             border-radius: 12px;
             font-family: 'Orbitron', sans-serif;
@@ -166,8 +166,8 @@
 
         /* Compact Command Player */
         .command-player {
-            background: rgba(5, 2, 10, 0.6);
-            border: 1px solid rgba(0, 240, 255, 0.15);
+            background: rgba(12, 6, 22, 0.6);
+            border: 1px solid rgba(191, 0, 255, 0.2);
             border-radius: 14px;
             padding: 15px;
             display: flex;
@@ -302,10 +302,10 @@
         }
 
         .nav-btn:hover, .nav-btn.active {
-            background: rgba(0, 240, 255, 0.1);
+            background: rgba(191, 0, 255, 0.12);
             border-color: var(--accent-neon);
             color: #fff;
-            box-shadow: 0 0 15px rgba(0, 240, 255, 0.2);
+            box-shadow: 0 0 15px rgba(191, 0, 255, 0.25);
         }
         .nav-btn.active::after {
             content: "▶";
@@ -331,7 +331,6 @@
             overflow: hidden;
         }
 
-        /* Cyber corners */
         .workspace-panel::before {
             content: "";
             position: absolute;
@@ -369,7 +368,7 @@
         }
 
         .stat-card {
-            background: rgba(8, 4, 16, 0.7);
+            background: rgba(12, 6, 22, 0.7);
             border: 1px solid rgba(255, 255, 255, 0.05);
             border-radius: 14px;
             padding: 20px;
@@ -378,18 +377,18 @@
         }
 
         .stat-card:hover {
-            border-color: rgba(0, 240, 255, 0.4);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5), 0 0 15px rgba(0, 240, 255, 0.1);
+            border-color: rgba(191, 0, 255, 0.5);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5), 0 0 20px rgba(191, 0, 255, 0.15);
             transform: translateY(-2px);
         }
 
         .stat-card.faceit-highlight {
-            border-color: rgba(255, 85, 0, 0.4);
-            background: linear-gradient(135deg, rgba(8, 4, 16, 0.8) 0%, rgba(35, 12, 0, 0.3) 100%);
+            border-color: rgba(191, 0, 255, 0.4);
+            background: linear-gradient(135deg, rgba(12, 6, 22, 0.8) 0%, rgba(35, 10, 50, 0.4) 100%);
         }
         .stat-card.faceit-highlight:hover {
-            border-color: var(--faceit-orange);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5), 0 0 20px rgba(255, 85, 0, 0.25);
+            border-color: var(--accent-neon);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5), 0 0 25px var(--accent-glow);
         }
 
         .card-title-bar {
@@ -434,9 +433,9 @@
             color: #fff;
         }
 
-        .metric-value.neon-cyan {
-            color: var(--accent-neon);
-            text-shadow: 0 0 8px var(--accent-glow);
+        .metric-value.neon-purple {
+            color: #e2a1ff;
+            text-shadow: 0 0 10px rgba(191, 0, 255, 0.6);
         }
 
         .metric-value.neon-orange {
@@ -452,7 +451,7 @@
         }
 
         .setting-box {
-            background: rgba(8, 4, 16, 0.7);
+            background: rgba(12, 6, 22, 0.7);
             border: 1px solid rgba(255, 255, 255, 0.05);
             border-radius: 14px;
             padding: 20px;
@@ -464,7 +463,7 @@
         .setting-box h3 {
             font-family: 'Orbitron', sans-serif;
             font-size: 0.9rem;
-            color: var(--accent-neon);
+            color: #e2a1ff;
             letter-spacing: 1px;
         }
 
@@ -481,19 +480,19 @@
 
         .crosshair-code {
             background: rgba(0, 0, 0, 0.5);
-            border: 1px solid rgba(0, 240, 255, 0.2);
+            border: 1px solid rgba(191, 0, 255, 0.3);
             padding: 10px;
             border-radius: 8px;
             font-family: monospace;
             font-size: 0.8rem;
-            color: var(--accent-neon);
+            color: #e2a1ff;
             word-break: break-all;
         }
 
         .copy-trigger {
-            background: rgba(0, 240, 255, 0.1);
+            background: rgba(191, 0, 255, 0.12);
             border: 1px solid var(--accent-neon);
-            color: var(--accent-neon);
+            color: #e2a1ff;
             padding: 8px 16px;
             border-radius: 8px;
             font-family: 'Orbitron', sans-serif;
@@ -507,8 +506,8 @@
         }
         .copy-trigger:hover {
             background: var(--accent-neon);
-            color: var(--bg-deep);
-            box-shadow: 0 0 15px var(--accent-neon);
+            color: #07030f;
+            box-shadow: 0 0 20px var(--accent-glow);
         }
 
         /* Matrix Canvas */
@@ -544,7 +543,7 @@
                     <h1>Powerrr666yyy</h1>
                     <div class="sidebar-badges" style="margin-top: 10px;">
                         <span class="badge">⚡ ELITE</span>
-                        <span class="badge">PRO HUD</span>
+                        <span class="badge">One tap Enjoyer</span>
                     </div>
                 </div>
             </div>
@@ -615,11 +614,11 @@
                             </div>
                             <div class="card-metrics-grid cols-3" style="margin-bottom: 12px;">
                                 <div class="metric-box"><span class="metric-label">AIM</span><span class="metric-value">89.0</span></div>
-                                <div class="metric-box"><span class="metric-label">CLUTCH</span><span class="metric-value neon-cyan">+11.1</span></div>
-                                <div class="metric-box"><span class="metric-label">RATING</span><span class="metric-value neon-cyan">+1.1</span></div>
+                                <div class="metric-box"><span class="metric-label">CLUTCH</span><span class="metric-value neon-purple">+11.1</span></div>
+                                <div class="metric-box"><span class="metric-label">RATING</span><span class="metric-value neon-purple">+1.1</span></div>
                                 <div class="metric-box"><span class="metric-label">WINRATE</span><span class="metric-value">55%</span></div>
                                 <div class="metric-box"><span class="metric-label">UTILITY</span><span class="metric-value">40.1</span></div>
-                                <div class="metric-box"><span class="metric-label">OPENING</span><span class="metric-value neon-cyan">-0.9</span></div>
+                                <div class="metric-box"><span class="metric-label">OPENING</span><span class="metric-value neon-purple">-0.9</span></div>
                             </div>
                             <div class="card-metrics-grid cols-3">
                                 <div class="metric-box"><span class="metric-label">PARTY</span><span class="metric-value">2.33</span></div>
@@ -632,7 +631,7 @@
                         <div class="stat-card faceit-highlight" style="grid-column: 1 / -1;">
                             <div class="card-title-bar">
                                 <span>FACEIT &bull; -</span>
-                                <span style="font-size: 0.65rem; background: rgba(255,85,0,0.15); padding: 2px 8px; border-radius: 4px; color: var(--faceit-orange); border: 1px solid var(--faceit-orange);">super_match</span>
+                                <span style="font-size: 0.65rem; background: rgba(191,0,255,0.15); padding: 2px 8px; border-radius: 4px; color: #e2a1ff; border: 1px solid var(--accent-neon);">super_match</span>
                             </div>
                             <div class="card-metrics-grid cols-3" style="margin-bottom: 15px;">
                                 <div class="metric-box"><span class="metric-label">REGISTERED</span><span class="metric-value">Jul 08, 2025</span></div>
@@ -765,7 +764,7 @@
             particles.forEach(p => {
                 p.y -= p.speedY;
                 if (p.y < 0) p.y = height;
-                ctx.fillStyle = `rgba(0, 240, 255, ${p.alpha})`;
+                ctx.fillStyle = `rgba(191, 0, 255, ${p.alpha})`;
                 ctx.beginPath();
                 ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
                 ctx.fill();
@@ -807,9 +806,9 @@
             for (let x = 0; x < columns; x++) rainDrops[x] = 1;
 
             matrixInterval = setInterval(() => {
-                mCtx.fillStyle = 'rgba(5, 2, 10, 0.05)';
+                mCtx.fillStyle = 'rgba(7, 3, 15, 0.05)';
                 mCtx.fillRect(0, 0, matrixCanvas.width, matrixCanvas.height);
-                mCtx.fillStyle = '#00f0ff';
+                mCtx.fillStyle = '#bf00ff';
                 mCtx.font = `${fontSize}px monospace`;
 
                 for (let i = 0; i < rainDrops.length; i++) {
@@ -857,11 +856,11 @@
                             </div>
                             <div class="card-metrics-grid cols-3" style="margin-bottom: 12px;">
                                 <div class="metric-box"><span class="metric-label">AIM</span><span class="metric-value">89.0</span></div>
-                                <div class="metric-box"><span class="metric-label">CLUTCH</span><span class="metric-value neon-cyan">+11.1</span></div>
-                                <div class="metric-box"><span class="metric-label">RATING</span><span class="metric-value neon-cyan">+1.1</span></div>
+                                <div class="metric-box"><span class="metric-label">CLUTCH</span><span class="metric-value neon-purple">+11.1</span></div>
+                                <div class="metric-box"><span class="metric-label">RATING</span><span class="metric-value neon-purple">+1.1</span></div>
                                 <div class="metric-box"><span class="metric-label">WINRATE</span><span class="metric-value">55%</span></div>
                                 <div class="metric-box"><span class="metric-label">UTILITY</span><span class="metric-value">40.1</span></div>
-                                <div class="metric-box"><span class="metric-label">OPENING</span><span class="metric-value neon-cyan">-0.9</span></div>
+                                <div class="metric-box"><span class="metric-label">OPENING</span><span class="metric-value neon-purple">-0.9</span></div>
                             </div>
                             <div class="card-metrics-grid cols-3">
                                 <div class="metric-box"><span class="metric-label">PARTY</span><span class="metric-value">2.33</span></div>
@@ -873,7 +872,7 @@
                         <div class="stat-card faceit-highlight" style="grid-column: 1 / -1;">
                             <div class="card-title-bar">
                                 <span>FACEIT &bull; -</span>
-                                <span style="font-size: 0.65rem; background: rgba(255,85,0,0.15); padding: 2px 8px; border-radius: 4px; color: var(--faceit-orange); border: 1px solid var(--faceit-orange);">super_match</span>
+                                <span style="font-size: 0.65rem; background: rgba(191,0,255,0.15); padding: 2px 8px; border-radius: 4px; color: #e2a1ff; border: 1px solid var(--accent-neon);">super_match</span>
                             </div>
                             <div class="card-metrics-grid cols-3" style="margin-bottom: 15px;">
                                 <div class="metric-box"><span class="metric-label">REGISTERED</span><span class="metric-value">Jul 08, 2025</span></div>
