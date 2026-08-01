@@ -1,5 +1,5 @@
-<!DOCTYPE html>
-<html lang="hu">
+html_content = """<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -587,9 +587,9 @@
                     <div class="progress-bar" id="progress-bar"></div>
                 </div>
                 <div class="player-controls-row">
-                    <button class="control-btn" onclick="skipTime(-10)" title="Vissza">⏮</button>
-                    <button class="control-btn main" id="play-pause-btn" onclick="togglePlay()" title="Lejátszás">⏸</button>
-                    <button class="control-btn" onclick="skipTime(10)" title="Előre">⏭</button>
+                    <button class="control-btn" onclick="skipTime(-10)" title="Rewind">⏮</button>
+                    <button class="control-btn main" id="play-pause-btn" onclick="togglePlay()" title="Play/Pause">⏸</button>
+                    <button class="control-btn" onclick="skipTime(10)" title="Forward">⏭</button>
                     <div class="volume-box">
                         <span style="font-size: 0.7rem;">🔊</span>
                         <input type="range" min="0" max="1" step="0.05" value="0.5" class="volume-slider" oninput="changeVolume(this.value)">
@@ -599,7 +599,7 @@
 
             <div class="sidebar-nav">
                 <button class="nav-btn active" onclick="switchView('stats', event)">⚡ Command Stats</button>
-                <button class="nav-btn" onclick="switchView('settings', event)">⚙️ Settingse</button>
+                <button class="nav-btn" onclick="switchView('settings', event)">⚙️ Settings</button>
                 <button class="nav-btn" onclick="switchView('peripherals', event)">🖱️ Peripherals</button>
                 <button class="nav-btn" onclick="switchView('pc', event)">💻 PC Setup</button>
                 <button class="nav-btn" onclick="toggleMatrixRain(event)">🟣 Neon Matrix</button>
@@ -908,7 +908,7 @@
                     </div>
                 `;
             } else if (viewType === 'settings') {
-                viewTitle.innerHTML = "<span>⚙️</span> Player Settingse & Setup";
+                viewTitle.innerHTML = "<span>⚙️</span> Player Settings & Setup";
                 viewContent.innerHTML = `
                     <div class="settings-container">
                         <div class="setting-box">
@@ -924,8 +924,8 @@
                             <button class="copy-trigger" onclick="copyCrosshair()">Copy Code</button>
                         </div>
                         <div class="setting-box" style="grid-column: 1 / -1;">
-                            <h3>CS2 Config (.cfg) Letöltés</h3>
-                            <div class="setting-row"><span>Tartalmazza az összes egyedi bindot, érzékenységet és beállítást:</span></div>
+                            <h3>CS2 Config (.cfg) Download</h3>
+                            <div class="setting-row"><span>Includes all custom binds, sensitivity, and game preferences:</span></div>
                             <div class="crosshair-code" style="max-height: 100px; overflow-y: auto;">
 sensitivity "1.28"
 zoom_sensitivity_ratio "1.0"
@@ -978,7 +978,7 @@ bind "CTRL" "+duck"
                             <div class="setting-row"><span class="setting-val-text">KINGSTON FURY Memória DDR5 32GB 6000MT/s CL36</span></div>
                         </div>
                         <div class="setting-box">
-                            <h3>Case (Gépház)</h3>
+                            <h3>Case</h3>
                             <div class="setting-row"><span class="setting-val-text">CORSAIR iCUE 5000X RGB QL Edition Mid-Tower ATX Case — True White</span></div>
                         </div>
                     </div>
@@ -1020,3 +1020,6 @@ echo "Powerrr666yyy CFG Loaded Successfully!"
     </script>
 </body>
 </html>
+"""
+with open("powerrr_command_center_v2.html", "w", encoding="utf-8") as f:
+    f.write(html_content)
