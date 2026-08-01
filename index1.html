@@ -24,6 +24,19 @@
             cursor: crosshair !important;
         }
 
+        /* 8. Egyedi Neon Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-deep);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--accent-neon);
+            border-radius: 4px;
+            box-shadow: 0 0 10px var(--accent-neon);
+        }
+
         body {
             background-color: var(--bg-deep);
             color: var(--text-main);
@@ -46,6 +59,18 @@
             pointer-events: none;
         }
 
+        /* 6. Fényes Egérkövető Fókusz (Spotlight Effect) */
+        .spotlight {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 1;
+            background: radial-gradient(circle 600px at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(0, 255, 204, 0.06), transparent 70%);
+        }
+
         #bg-canvas {
             position: fixed;
             top: 0;
@@ -54,6 +79,22 @@
             height: 100vh;
             pointer-events: none;
             z-index: 0;
+        }
+
+        /* Matrix Rain Canvas */
+        #matrix-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        #matrix-canvas.active {
+            opacity: 0.25;
         }
 
         .container {
@@ -183,6 +224,7 @@
             flex-wrap: wrap;
             gap: 15px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+            position: relative;
         }
 
         .community-info {
@@ -236,6 +278,7 @@
             align-items: center;
             gap: 20px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+            position: relative;
         }
 
         .eq-visualizer {
@@ -326,6 +369,34 @@
             text-shadow: 0 0 12px var(--accent-neon);
         }
 
+        /* 2. Interaktív Hangerőszabályzó Csúszka stílus */
+        .volume-control-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-left: 5px;
+        }
+
+        .volume-slider {
+            width: 70px;
+            height: 5px;
+            appearance: none;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 3px;
+            outline: none;
+            cursor: crosshair;
+        }
+
+        .volume-slider::-webkit-slider-thumb {
+            appearance: none;
+            width: 11px;
+            height: 11px;
+            border-radius: 50%;
+            background: var(--accent-neon);
+            box-shadow: 0 0 8px var(--accent-neon);
+            cursor: crosshair;
+        }
+
         /* Navigation Buttons Bar */
         .interactive-bar {
             display: flex;
@@ -370,21 +441,24 @@
             box-shadow: 0 15px 35px rgba(0,0,0,0.5), 0 0 25px var(--accent-glow);
         }
 
-        /* Ripple Effect */
+        /* 9. Kattintáskor Felszabaduló Shockwave (Lökéshullám) */
         .ripple {
             position: absolute;
-            background: rgba(0, 255, 204, 0.4);
             border-radius: 50%;
             transform: scale(0);
-            animation: rippleAnim 0.6s linear;
+            animation: shockwaveAnim 0.6s cubic-bezier(0, 0.2, 0.8, 1) forwards;
             pointer-events: none;
+            border: 2px solid var(--accent-neon);
+            box-shadow: 0 0 15px var(--accent-neon);
+            background: rgba(0, 255, 204, 0.2);
         }
 
-        @keyframes rippleAnim {
-            to { transform: scale(4); opacity: 0; }
+        @keyframes shockwaveAnim {
+            0% { transform: scale(0); opacity: 1; }
+            100% { transform: scale(5); opacity: 0; }
         }
 
-        /* Main Content Container / Tilt Card */
+        /* Main Content Container */
         .content-panel {
             background: var(--glass-bg);
             backdrop-filter: blur(25px);
@@ -392,8 +466,25 @@
             border-radius: 24px;
             padding: 35px;
             box-shadow: 0 30px 60px rgba(0,0,0,0.7), inset 0 1px 0 rgba(255, 255, 255, 0.1);
-            transition: all 0.4s ease;
+            transition: transform 0.1s ease-out, border-color 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
         }
+
+        /* 5. HUD / Sci-Fi Sarokdekorációk a panelen */
+        .content-panel::before, .content-panel::after,
+        .community-section::before, .community-section::after {
+            content: "";
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            border-color: var(--accent-neon);
+            border-style: solid;
+            pointer-events: none;
+            opacity: 0.6;
+        }
+        .content-panel::before { top: 8px; left: 8px; border-width: 2px 0 0 2px; }
+        .content-panel::after { top: 8px; right: 8px; border-width: 2px 2px 0 0; }
 
         .content-panel h2 {
             font-family: 'Orbitron', sans-serif;
@@ -645,7 +736,9 @@
 </head>
 <body>
 
+    <div class="spotlight" id="spotlight"></div>
     <canvas id="bg-canvas"></canvas>
+    <canvas id="matrix-canvas"></canvas>
     <audio id="bg-music" src="zene.mp3" loop autoplay></audio>
 
     <div class="container">
@@ -654,7 +747,8 @@
                 <img src="Powerrrpfp.jpg" alt="Powerrr666yyy Avatar">
             </div>
             <div>
-                <h1>Powerrr666yyy</h1>
+                <!-- 2. Glitch effekt a néven -->
+                <h1 id="glitch-title" data-text="Powerrr666yyy">Powerrr666yyy</h1>
                 <div class="badges-wrapper" style="margin-top: 15px;">
                     <div class="badge">⚡ Elite Status</div>
                     <div class="badge">🏆 Cyber Dominance</div>
@@ -706,15 +800,23 @@
                 <button class="control-icon-btn" onclick="skipTime(-10)" title="10mp Vissza">⏮</button>
                 <button class="control-icon-btn main-play" id="play-pause-btn" onclick="togglePlay()" title="Lejátszás / Szünet">⏸</button>
                 <button class="control-icon-btn" onclick="skipTime(10)" title="10mp Előre">⏭</button>
+                <!-- 2. Interaktív Hangerőszabályzó Csúszka -->
+                <div class="volume-control-wrapper" title="Hangerő">
+                    <span style="font-size: 0.8rem; color: var(--text-muted);">🔊</span>
+                    <input type="range" min="0" max="1" step="0.05" value="0.5" class="volume-slider" id="volume-slider" oninput="changeVolume(this.value)">
+                </div>
             </div>
         </div>
 
         <div class="interactive-bar">
             <button class="action-btn active" onclick="switchTab('primary', event)">⚡ Primary Stats</button>
             <button class="action-btn" onclick="switchTab('settings', event)">⚙️ Settings</button>
+            <!-- 8. Matrix Rain Háttér Váltó Gomb -->
+            <button class="action-btn" onclick="toggleMatrixRain(event)">🟢 Matrix Rain</button>
         </div>
 
-        <div class="content-panel tilt-card" id="main-panel" data-tilt>
+        <!-- 3D Tilt kártya konténer -->
+        <div class="content-panel tilt-card" id="main-panel">
             <h2 id="panel-title">Primary Statistics</h2>
             <p id="panel-desc">Official performance overview and cyber match metrics.</p>
             
@@ -807,10 +909,11 @@
     </div>
 
     <script>
+        // 9. Lökéshullám (Shockwave) effekt kattintásra gombokon / interaktív elemeken
         document.addEventListener('click', function(e) {
-            if (e.target.classList.contains('action-btn') || e.target.classList.contains('copy-btn')) {
-                const btn = e.target;
-                const rect = btn.getBoundingClientRect();
+            const target = e.target.closest('.action-btn, .copy-btn, .social-icon-btn');
+            if (target) {
+                const rect = target.getBoundingClientRect();
                 const x = e.clientX - rect.left;
                 const y = e.clientY - rect.top;
                 
@@ -818,9 +921,38 @@
                 ripple.classList.add('ripple');
                 ripple.style.left = `${x}px`;
                 ripple.style.top = `${y}px`;
-                btn.appendChild(ripple);
+                ripple.style.width = `20px`;
+                ripple.style.height = `20px`;
+                ripple.style.marginLeft = `-10px`;
+                ripple.style.marginTop = `-10px`;
+                target.appendChild(ripple);
                 
                 setTimeout(() => ripple.remove(), 600);
+            }
+        });
+
+        // 6. Spotlight egérkövető pozíció frissítése
+        const spotlight = document.getElementById('spotlight');
+        window.addEventListener('mousemove', (e) => {
+            const x = (e.clientX / window.innerWidth) * 100;
+            const y = (e.clientY / window.innerHeight) * 100;
+            spotlight.style.setProperty('--mouse-x', `${x}%`);
+            spotlight.style.setProperty('--mouse-y', `${y}%`);
+        });
+
+        // 3D Tilt / Parallaxis Kártyák kezelése
+        const tiltCard = document.getElementById('main-panel');
+        document.addEventListener('mousemove', (e) => {
+            const rect = tiltCard.getBoundingClientRect();
+            const x = e.clientX - rect.left - rect.width / 2;
+            const y = e.clientY - rect.top - rect.height / 2;
+            
+            if (e.clientX >= rect.left && e.clientX <= rect.right && e.clientY >= rect.top && e.clientY <= rect.bottom) {
+                const rotX = (-y / (rect.height / 2)) * 4;
+                const rotY = (x / (rect.width / 2)) * 4;
+                tiltCard.style.transform = `perspective(1000px) rotateX(${rotX}deg) rotateY(${rotY}deg) scale3d(1.01, 1.01, 1.01)`;
+            } else {
+                tiltCard.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
             }
         });
 
@@ -831,6 +963,7 @@
         const currentTimeEl = document.getElementById('current-time');
         const durationTimeEl = document.getElementById('duration-time');
         const playerBar = document.getElementById('player-bar');
+        const volumeSlider = document.getElementById('volume-slider');
 
         window.addEventListener('DOMContentLoaded', () => {
             music.volume = 0.5;
@@ -860,6 +993,11 @@
                 playPauseBtn.textContent = "▶";
                 playerBar.classList.remove('playing');
             }
+        }
+
+        // 2. Interaktív hangerő funkció
+        function changeVolume(val) {
+            music.volume = val;
         }
 
         music.addEventListener('timeupdate', () => {
@@ -931,6 +1069,60 @@
 
         animate();
 
+        // 8. Matrix Rain logika
+        const matrixCanvas = document.getElementById('matrix-canvas');
+        const mCtx = matrixCanvas.getContext('2d');
+        let matrixActive = false;
+        let matrixInterval = null;
+
+        function toggleMatrixRain(event) {
+            matrixActive = !matrixActive;
+            const btn = event.target;
+            if (matrixActive) {
+                matrixCanvas.classList.add('active');
+                btn.classList.add('active');
+                btn.textContent = "🟢 Matrix: ON";
+                startMatrixRain();
+            } else {
+                matrixCanvas.classList.remove('active');
+                btn.classList.remove('active');
+                btn.textContent = "🟢 Matrix Rain";
+                clearInterval(matrixInterval);
+                mCtx.clearRect(0, 0, matrixCanvas.width, matrixCanvas.height);
+            }
+        }
+
+        function startMatrixRain() {
+            matrixCanvas.width = window.innerWidth;
+            matrixCanvas.height = window.innerHeight;
+            const katakana = 'アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズブヅプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロヲゴゾドボポヴッン';
+            const latin = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%&*';
+            const alphabet = katakana + latin;
+            const fontSize = 16;
+            const columns = matrixCanvas.width / fontSize;
+            const rainDrops = [];
+            for (let x = 0; x < columns; x++) {
+                rainDrops[x] = 1;
+            }
+
+            matrixInterval = setInterval(() => {
+                mCtx.fillStyle = 'rgba(5, 5, 8, 0.05)';
+                mCtx.fillRect(0, 0, matrixCanvas.width, matrixCanvas.height);
+                mCtx.fillStyle = '#00ffcc';
+                mCtx.font = `${fontSize}px monospace`;
+
+                for (let i = 0; i < rainDrops.length; i++) {
+                    const text = alphabet.charAt(Math.floor(Math.random() * alphabet.length));
+                    mCtx.fillText(text, i * fontSize, rainDrops[i] * fontSize);
+
+                    if (rainDrops[i] * fontSize > matrixCanvas.height && Math.random() > 0.975) {
+                        rainDrops[i] = 0;
+                    }
+                    rainDrops[i]++;
+                }
+            }, 30);
+        }
+
         function switchFaceitTab(game) {
             const tabs = document.querySelectorAll('.faceit-tab');
             tabs.forEach(t => t.classList.remove('active'));
@@ -969,8 +1161,10 @@
 
         function switchTab(tab, event) {
             const buttons = document.querySelectorAll('.action-btn');
-            buttons.forEach(btn => btn.classList.remove('active'));
-            event.target.classList.add('active');
+            buttons.forEach(btn => {
+                if(!btn.textContent.includes('Matrix')) btn.classList.remove('active');
+            });
+            if(!event.target.textContent.includes('Matrix')) event.target.classList.add('active');
 
             const title = document.getElementById('panel-title');
             const desc = document.getElementById('panel-desc');
