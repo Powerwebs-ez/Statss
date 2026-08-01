@@ -1,0 +1,1111 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Powerrr666yyy | Elite Cyber Lounge</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-deep: #050508;
+            --accent-neon: #00ffcc;
+            --accent-glow: rgba(0, 255, 204, 0.35);
+            --secondary-neon: #ff0055;
+            --glass-bg: rgba(12, 12, 20, 0.7);
+            --glass-border: rgba(0, 255, 204, 0.2);
+            --text-main: #f0f4f8;
+            --text-muted: #8a99ad;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            cursor: crosshair !important;
+        }
+
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-main);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+            padding: 40px 20px;
+        }
+
+        /* Sci-Fi / Cyberpunk Scanlines & Grid Overlay */
+        body::before {
+            content: " ";
+            display: block;
+            position: fixed;
+            top: 0; left: 0; bottom: 0; right: 0;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+            z-index: 999;
+            background-size: 100% 3px, 6px 100%;
+            pointer-events: none;
+        }
+
+        #bg-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Header & Avatar Redesign */
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .profile-avatar-container {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 2px solid var(--accent-neon);
+            box-shadow: 0 0 40px var(--accent-glow), inset 0 0 20px rgba(0, 255, 204, 0.5);
+            position: relative;
+            animation: cyberPulse 4s ease-in-out infinite alternate;
+        }
+
+        @keyframes cyberPulse {
+            0% { box-shadow: 0 0 20px rgba(0, 255, 204, 0.3), inset 0 0 10px rgba(0, 255, 204, 0.2); transform: scale(1); }
+            100% { box-shadow: 0 0 50px rgba(0, 255, 204, 0.7), inset 0 0 25px rgba(0, 255, 204, 0.6); transform: scale(1.04); }
+        }
+
+        .profile-avatar-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        header h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3rem;
+            font-weight: 900;
+            letter-spacing: 3px;
+            color: #fff;
+            text-shadow: 0 0 20px var(--accent-neon), 0 0 40px rgba(0, 255, 204, 0.4);
+            position: relative;
+        }
+
+        .badges-wrapper {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            background: rgba(0, 255, 204, 0.08);
+            border: 1px solid var(--accent-neon);
+            color: var(--accent-neon);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            box-shadow: 0 0 15px rgba(0, 255, 204, 0.2);
+        }
+
+        /* Social Bar */
+        .social-links-bar {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+        }
+
+        .social-icon-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 14px;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(16px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            text-decoration: none;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+        }
+
+        .social-icon-btn img {
+            width: 24px;
+            height: 24px;
+            object-fit: contain;
+            transition: transform 0.3s;
+        }
+
+        .social-icon-btn:hover {
+            border-color: var(--accent-neon);
+            background: rgba(0, 255, 204, 0.12);
+            transform: translateY(-4px) scale(1.05);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.6), 0 0 20px var(--accent-glow);
+        }
+
+        .social-icon-btn:hover img {
+            transform: scale(1.2);
+        }
+
+        /* Community Banner */
+        .community-section {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(16px);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 25px;
+            padding: 16px 24px;
+            flex-wrap: wrap;
+            gap: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+        }
+
+        .community-info {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .community-icon {
+            font-size: 1.8rem;
+            color: var(--accent-neon);
+            filter: drop-shadow(0 0 10px var(--accent-neon));
+        }
+
+        .community-text h3 {
+            font-family: 'Orbitron', sans-serif;
+            color: #fff;
+            font-size: 1rem;
+            letter-spacing: 1px;
+            margin-bottom: 2px;
+        }
+
+        .community-text p {
+            color: var(--text-muted);
+            font-size: 0.8rem;
+        }
+
+        .admin-badge-highlight {
+            color: var(--secondary-neon);
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-shadow: 0 0 10px rgba(255, 0, 85, 0.5);
+            background: rgba(255, 0, 85, 0.1);
+            padding: 8px 16px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 0, 85, 0.3);
+        }
+
+        /* Audio Player Bar */
+        .transparent-player {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(16px);
+            border-radius: 16px;
+            padding: 14px 24px;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+        }
+
+        .eq-visualizer {
+            display: flex;
+            align-items: flex-end;
+            gap: 3px;
+            height: 18px;
+            width: 24px;
+        }
+
+        .eq-bar {
+            width: 4px;
+            background: var(--text-muted);
+            border-radius: 2px;
+            height: 4px;
+            transition: height 0.2s ease;
+        }
+
+        .transparent-player.playing .eq-bar {
+            background: var(--accent-neon);
+            animation: eqDance 0.8s infinite alternate ease-in-out;
+            box-shadow: 0 0 10px var(--accent-neon);
+        }
+
+        .transparent-player.playing .eq-bar:nth-child(1) { animation-delay: 0.1s; }
+        .transparent-player.playing .eq-bar:nth-child(2) { animation-delay: 0.4s; }
+        .transparent-player.playing .eq-bar:nth-child(3) { animation-delay: 0.2s; }
+        .transparent-player.playing .eq-bar:nth-child(4) { animation-delay: 0.5s; }
+
+        @keyframes eqDance {
+            0% { height: 4px; }
+            100% { height: 18px; }
+        }
+
+        .time-display {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            font-variant-numeric: tabular-nums;
+            min-width: 40px;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .progress-container {
+            flex-grow: 1;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 3px;
+            cursor: crosshair;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: var(--accent-neon);
+            width: 0%;
+            border-radius: 3px;
+            box-shadow: 0 0 12px var(--accent-neon);
+        }
+
+        .player-controls {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .control-icon-btn {
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            font-size: 1rem;
+            cursor: crosshair;
+            transition: color 0.2s, transform 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 4px;
+        }
+
+        .control-icon-btn:hover {
+            color: var(--accent-neon);
+            transform: scale(1.2);
+        }
+
+        .control-icon-btn.main-play {
+            color: var(--accent-neon);
+            font-size: 1.3rem;
+            text-shadow: 0 0 12px var(--accent-neon);
+        }
+
+        /* Navigation Buttons Bar */
+        .interactive-bar {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .action-btn {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(16px);
+            color: var(--text-muted);
+            padding: 12px 28px;
+            border-radius: 14px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            cursor: crosshair;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+        }
+
+        .action-btn:hover {
+            border-color: var(--accent-neon);
+            color: #fff;
+            background: rgba(0, 255, 204, 0.08);
+            transform: translateY(-2px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.5), 0 0 20px var(--accent-glow);
+        }
+
+        .action-btn.active {
+            background: rgba(0, 255, 204, 0.15);
+            border-color: var(--accent-neon);
+            color: var(--accent-neon);
+            text-shadow: 0 0 10px var(--accent-neon);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.5), 0 0 25px var(--accent-glow);
+        }
+
+        /* Ripple Effect */
+        .ripple {
+            position: absolute;
+            background: rgba(0, 255, 204, 0.4);
+            border-radius: 50%;
+            transform: scale(0);
+            animation: rippleAnim 0.6s linear;
+            pointer-events: none;
+        }
+
+        @keyframes rippleAnim {
+            to { transform: scale(4); opacity: 0; }
+        }
+
+        /* Main Content Container / Tilt Card */
+        .content-panel {
+            background: var(--glass-bg);
+            backdrop-filter: blur(25px);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 35px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.7), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            transition: all 0.4s ease;
+        }
+
+        .content-panel h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5rem;
+            color: #fff;
+            margin-bottom: 8px;
+            letter-spacing: 2px;
+        }
+
+        .content-panel p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 25px;
+        }
+
+        /* Dashboard Elements */
+        .stats-dashboard {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            text-align: left;
+        }
+
+        .stats-top-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 20px;
+        }
+
+        .stats-card-box {
+            background: rgba(18, 18, 28, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 16px;
+            padding: 22px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+            backdrop-filter: blur(12px);
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        .stats-card-box:hover {
+            border-color: rgba(0, 255, 204, 0.4);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4), 0 0 15px rgba(0, 255, 204, 0.1);
+        }
+
+        .stats-card-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 18px;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            font-size: 1rem;
+            color: #fff;
+            letter-spacing: 1px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            padding-bottom: 10px;
+        }
+
+        .stats-grid-2cols {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+
+        .stat-item-box {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .stat-label {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        .stat-val {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: #fff;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .stat-val.neon {
+            color: var(--accent-neon);
+            text-shadow: 0 0 10px rgba(0, 255, 204, 0.4);
+        }
+
+        .stat-val img.faceit-lvl-img {
+            height: 1.25rem;
+            width: auto;
+            object-fit: contain;
+            vertical-align: middle;
+            display: inline-block;
+        }
+
+        .stats-grid-3cols {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+
+        .stats-bottom-row {
+            background: rgba(18, 18, 28, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 16px;
+            padding: 22px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+            backdrop-filter: blur(12px);
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        .stats-bottom-row:hover {
+            border-color: rgba(0, 255, 204, 0.4);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4), 0 0 15px rgba(0, 255, 204, 0.1);
+        }
+
+        .faceit-tabs {
+            display: flex;
+            gap: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            padding-bottom: 10px;
+            margin-bottom: 18px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.85rem;
+        }
+
+        .faceit-tab {
+            color: var(--text-muted);
+            font-weight: 600;
+            position: relative;
+            padding-bottom: 4px;
+            cursor: crosshair;
+            transition: color 0.2s;
+        }
+
+        .faceit-tab:hover {
+            color: #fff;
+        }
+
+        .faceit-tab.active {
+            color: var(--accent-neon);
+        }
+
+        .faceit-tab.active::after {
+            content: '';
+            position: absolute;
+            bottom: -11px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--accent-neon);
+            box-shadow: 0 0 8px var(--accent-neon);
+        }
+
+        .faceit-stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            gap: 18px;
+        }
+
+        .recent-matches {
+            display: flex;
+            gap: 6px;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+
+        .match-l { color: var(--secondary-neon); text-shadow: 0 0 8px rgba(255, 0, 85, 0.4); }
+        .match-w { color: var(--accent-neon); text-shadow: 0 0 8px rgba(0, 255, 204, 0.4); }
+
+        /* Settings Grid Panel */
+        .settings-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            text-align: left;
+        }
+
+        .setting-card {
+            background: rgba(18, 18, 28, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            backdrop-filter: blur(12px);
+            border-radius: 16px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .setting-card h3 {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--accent-neon);
+            font-size: 1rem;
+            letter-spacing: 1px;
+        }
+
+        .setting-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .setting-value {
+            color: #fff;
+            font-weight: 600;
+        }
+
+        .crosshair-code-box {
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 10px 14px;
+            border-radius: 8px;
+            font-family: monospace;
+            font-size: 0.85rem;
+            color: var(--accent-neon);
+            word-break: break-all;
+        }
+
+        .copy-btn {
+            background: var(--glass-bg);
+            border: 1px solid var(--accent-neon);
+            color: var(--accent-neon);
+            padding: 9px 18px;
+            border-radius: 8px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            cursor: crosshair;
+            transition: all 0.2s ease;
+            text-transform: uppercase;
+            align-self: flex-start;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .copy-btn:hover {
+            background: var(--accent-neon);
+            color: #050508;
+            box-shadow: 0 0 20px var(--accent-glow);
+        }
+    </style>
+</head>
+<body>
+
+    <canvas id="bg-canvas"></canvas>
+    <audio id="bg-music" src="zene.mp3" loop autoplay></audio>
+
+    <div class="container">
+        <header>
+            <div class="profile-avatar-container">
+                <img src="Powerrrpfp.jpg" alt="Powerrr666yyy Avatar">
+            </div>
+            <div>
+                <h1>Powerrr666yyy</h1>
+                <div class="badges-wrapper" style="margin-top: 15px;">
+                    <div class="badge">⚡ Elite Status</div>
+                    <div class="badge">🏆 Cyber Dominance</div>
+                </div>
+            </div>
+        </header>
+
+        <div class="social-links-bar">
+            <a href="https://steamcommunity.com/id/alwaysbetter2" target="_blank" class="social-icon-btn" title="Steam">
+                <img src="steam.jpg" alt="Steam">
+            </a>
+            <a href="https://www.faceit.com/en/players/240hzTalent" target="_blank" class="social-icon-btn" title="Faceit">
+                <img src="faceit.jpg" alt="Faceit">
+            </a>
+            <a href="https://discord.gg/ubec" target="_blank" class="social-icon-btn" title="Discord">
+                <img src="discord.jpg" alt="Discord">
+            </a>
+            <a href="https://ubec.hu/" target="_blank" class="social-icon-btn" title="UBEC">
+                <img src="ubec.jpg" alt="UBEC">
+            </a>
+        </div>
+
+        <div class="community-section">
+            <div class="community-info">
+                <div class="community-icon">🛡️</div>
+                <div class="community-text">
+                    <h3>Unbreakable Community</h3>
+                    <p>CS2 Public Server Network</p>
+                </div>
+            </div>
+            <div class="admin-badge-highlight">
+                👑 Admin Controller
+            </div>
+        </div>
+
+        <div class="transparent-player" id="player-bar">
+            <div class="eq-visualizer">
+                <div class="eq-bar"></div>
+                <div class="eq-bar"></div>
+                <div class="eq-bar"></div>
+                <div class="eq-bar"></div>
+            </div>
+            <div class="time-display" id="current-time">0:00</div>
+            <div class="progress-container" id="progress-container" onclick="seekAudio(event)">
+                <div class="progress-bar" id="progress-bar"></div>
+            </div>
+            <div class="time-display" id="duration-time">0:00</div>
+            <div class="player-controls">
+                <button class="control-icon-btn" onclick="skipTime(-10)" title="10mp Vissza">⏮</button>
+                <button class="control-icon-btn main-play" id="play-pause-btn" onclick="togglePlay()" title="Lejátszás / Szünet">⏸</button>
+                <button class="control-icon-btn" onclick="skipTime(10)" title="10mp Előre">⏭</button>
+            </div>
+        </div>
+
+        <div class="interactive-bar">
+            <button class="action-btn active" onclick="switchTab('primary', event)">⚡ Primary Stats</button>
+            <button class="action-btn" onclick="switchTab('settings', event)">⚙️ Settings</button>
+        </div>
+
+        <div class="content-panel tilt-card" id="main-panel" data-tilt>
+            <h2 id="panel-title">Primary Statistics</h2>
+            <p id="panel-desc">Official performance overview and cyber match metrics.</p>
+            
+            <div id="panel-content">
+                <div class="stats-dashboard" id="stats-dashboard-container">
+                    <div class="stats-top-row">
+                        <div class="stats-card-box">
+                            <div class="stats-card-header">
+                                <span>STEAM</span> &bull; Powerrr666yyy
+                            </div>
+                            <div class="stats-grid-2cols">
+                                <div class="stat-item-box">
+                                    <span class="stat-label">CS FRIENDCODE</span>
+                                    <span class="stat-val" style="font-family: monospace;">AK5QJ-D8PG</span>
+                                </div>
+                                <div class="stat-item-box">
+                                    <span class="stat-label">VANITY</span>
+                                    <span class="stat-val">alwaysbetter2</span>
+                                </div>
+                                <div class="stat-item-box">
+                                    <span class="stat-label">REGISTERED</span>
+                                    <span class="stat-val">Dec 23, 2017</span>
+                                </div>
+                                <div class="stat-item-box">
+                                    <span class="stat-label">XP LEVEL</span>
+                                    <span class="stat-val">193</span>
+                                </div>
+                                <div class="stat-item-box">
+                                    <span class="stat-label">COMMENDATIONS</span>
+                                    <span class="stat-val">77 😊 70 👑 70 🎓</span>
+                                </div>
+                                <div class="stat-item-box">
+                                    <span class="stat-label">CS2 PLAYTIME</span>
+                                    <span class="stat-val">3,431h / 48h</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="stats-card-box">
+                            <div class="stats-card-header">
+                                <span>CYBER</span> &bull; Performance Metrics
+                            </div>
+                            <div class="stats-grid-3cols" style="margin-bottom: 16px;">
+                                <div class="stat-item-box"><span class="stat-label">AIM</span><span class="stat-val">83.9</span></div>
+                                <div class="stat-item-box"><span class="stat-label">CLUTCH</span><span class="stat-val neon">+10.7</span></div>
+                                <div class="stat-item-box"><span class="stat-label">RATING</span><span class="stat-val neon">+2.3</span></div>
+                                <div class="stat-item-box"><span class="stat-label">TIME TO DMG</span><span class="stat-val">629ms</span></div>
+                                <div class="stat-item-box"><span class="stat-label">WINRATE</span><span class="stat-val">43% / 40%</span></div>
+                                <div class="stat-item-box"><span class="stat-label">UTILITY</span><span class="stat-val">51.6</span></div>
+                            </div>
+                            <div class="stats-grid-3cols">
+                                <div class="stat-item-box"><span class="stat-label">OPENING</span><span class="stat-val neon">+2.5</span></div>
+                                <div class="stat-item-box"><span class="stat-label">PARTY</span><span class="stat-val">2.55</span></div>
+                                <div class="stat-item-box"><span class="stat-label">AVG HE DMG</span><span class="stat-val">9.2 / 1.5</span></div>
+                                <div class="stat-item-box"><span class="stat-label">MATCHES</span><span class="stat-val">653 / 0.2%</span></div>
+                                <div class="stat-item-box"><span class="stat-label">KD</span><span class="stat-val">1.12</span></div>
+                                <div class="stat-item-box"><span class="stat-label">PEAK RATING</span><span class="stat-val neon">24,886</span></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="stats-bottom-row" id="faceit-section-container">
+                        <div class="stats-card-header" style="justify-content: space-between; border-bottom: none; margin-bottom: 10px; padding-bottom: 0;">
+                            <span>FACEIT &bull; 240hzTalent</span>
+                            <span style="font-size: 0.8rem; color: var(--text-muted);">🇭🇺 / hu</span>
+                        </div>
+                        <div class="faceit-tabs">
+                            <span class="faceit-tab" onclick="switchFaceitTab('csgo')">CSGO</span>
+                            <span class="faceit-tab active" onclick="switchFaceitTab('cs2')">CS2</span>
+                        </div>
+                        <div class="faceit-stats-grid" id="faceit-stats-grid">
+                            <div class="stat-item-box"><span class="stat-label">ELO</span><span class="stat-val neon">1467 <img src="lvl7.jpg" alt="Level 7" class="faceit-lvl-img"></span></div>
+                            <div class="stat-item-box"><span class="stat-label">PEAK ELO</span><span class="stat-val neon">1521 <img src="lvl7.jpg" alt="Level 7" class="faceit-lvl-img"></span></div>
+                            <div class="stat-item-box"><span class="stat-label">WINRATE</span><span class="stat-val">51.30%</span></div>
+                            <div class="stat-item-box"><span class="stat-label">MATCHES</span><span class="stat-val">193</span></div>
+                            <div class="stat-item-box"><span class="stat-label">HS%</span><span class="stat-val">46%</span></div>
+                            <div class="stat-item-box"><span class="stat-label">KD</span><span class="stat-val">1.21</span></div>
+                            <div class="stat-item-box"><span class="stat-label">ADR</span><span class="stat-val">97.5</span></div>
+                            <div class="stat-item-box">
+                                <span class="stat-label">RECENT</span>
+                                <div class="recent-matches">
+                                    <span class="match-l">L</span><span class="match-w">W</span><span class="match-w">W</span><span class="match-l">L</span><span class="match-l">L</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('click', function(e) {
+            if (e.target.classList.contains('action-btn') || e.target.classList.contains('copy-btn')) {
+                const btn = e.target;
+                const rect = btn.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const ripple = document.createElement('span');
+                ripple.classList.add('ripple');
+                ripple.style.left = `${x}px`;
+                ripple.style.top = `${y}px`;
+                btn.appendChild(ripple);
+                
+                setTimeout(() => ripple.remove(), 600);
+            }
+        });
+
+        const music = document.getElementById('bg-music');
+        const playPauseBtn = document.getElementById('play-pause-btn');
+        const progressBar = document.getElementById('progress-bar');
+        const progressContainer = document.getElementById('progress-container');
+        const currentTimeEl = document.getElementById('current-time');
+        const durationTimeEl = document.getElementById('duration-time');
+        const playerBar = document.getElementById('player-bar');
+
+        window.addEventListener('DOMContentLoaded', () => {
+            music.volume = 0.5;
+            music.play().then(() => {
+                playerBar.classList.add('playing');
+                playPauseBtn.textContent = "⏸";
+            }).catch(() => {
+                playPauseBtn.textContent = "▶";
+                playerBar.classList.remove('playing');
+                document.body.addEventListener('click', () => {
+                    if (music.paused) {
+                        music.play();
+                        playerBar.classList.add('playing');
+                        playPauseBtn.textContent = "⏸";
+                    }
+                }, { once: true });
+            });
+        });
+
+        function togglePlay() {
+            if (music.paused) {
+                music.play();
+                playPauseBtn.textContent = "⏸";
+                playerBar.classList.add('playing');
+            } else {
+                music.pause();
+                playPauseBtn.textContent = "▶";
+                playerBar.classList.remove('playing');
+            }
+        }
+
+        music.addEventListener('timeupdate', () => {
+            if (!isNaN(music.duration)) {
+                const progressPercent = (music.currentTime / music.duration) * 100;
+                progressBar.style.width = `${progressPercent}%`;
+                currentTimeEl.textContent = formatTime(music.currentTime);
+                durationTimeEl.textContent = formatTime(music.duration);
+            }
+        });
+
+        function seekAudio(e) {
+            const width = progressContainer.clientWidth;
+            const clickX = e.offsetX;
+            const duration = music.duration;
+            if (!isNaN(duration)) {
+                music.currentTime = (clickX / width) * duration;
+            }
+        }
+
+        function skipTime(seconds) {
+            music.currentTime = Math.min(Math.max(music.currentTime + seconds, 0), music.duration);
+        }
+
+        function formatTime(seconds) {
+            const mins = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
+        }
+
+        // Cyber Grid Background Particles Canvas
+        const canvas = document.getElementById('bg-canvas');
+        const ctx = canvas.getContext('2d');
+
+        let width = canvas.width = window.innerWidth;
+        let height = canvas.height = window.innerHeight;
+
+        window.addEventListener('resize', () => {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+        });
+
+        const particles = [];
+        for (let i = 0; i < 50; i++) {
+            particles.push({
+                x: Math.random() * width,
+                y: Math.random() * height,
+                size: Math.random() * 2 + 0.5,
+                speedY: Math.random() * 0.5 + 0.2,
+                alpha: Math.random() * 0.6 + 0.2
+            });
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, width, height);
+            
+            particles.forEach(p => {
+                p.y -= p.speedY;
+                if (p.y < 0) p.y = height;
+
+                ctx.fillStyle = `rgba(0, 255, 204, ${p.alpha})`;
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                ctx.fill();
+            });
+
+            requestAnimationFrame(animate);
+        }
+
+        animate();
+
+        function switchFaceitTab(game) {
+            const tabs = document.querySelectorAll('.faceit-tab');
+            tabs.forEach(t => t.classList.remove('active'));
+            
+            const grid = document.getElementById('faceit-stats-grid');
+
+            if (game === 'csgo') {
+                tabs[0].classList.add('active');
+                grid.innerHTML = `
+                    <div class="stat-item-box"><span class="stat-label">ELO</span><span class="stat-val neon">1004 <img src="lvl7.jpg" alt="Level 7" class="faceit-lvl-img"></span></div>
+                    <div class="stat-item-box"><span class="stat-label">WINRATE</span><span class="stat-val">52.94%</span></div>
+                    <div class="stat-item-box"><span class="stat-label">HS%</span><span class="stat-val">35%</span></div>
+                    <div class="stat-item-box"><span class="stat-label">PEAK ELO</span><span class="stat-val neon">1034 <img src="lvl7.jpg" alt="Level 7" class="faceit-lvl-img"></span></div>
+                    <div class="stat-item-box"><span class="stat-label">MATCHES</span><span class="stat-val">17</span></div>
+                    <div class="stat-item-box"><span class="stat-label">KD</span><span class="stat-val">0.85</span></div>
+                `;
+            } else {
+                tabs[1].classList.add('active');
+                grid.innerHTML = `
+                    <div class="stat-item-box"><span class="stat-label">ELO</span><span class="stat-val neon">1467 <img src="lvl7.jpg" alt="Level 7" class="faceit-lvl-img"></span></div>
+                    <div class="stat-item-box"><span class="stat-label">PEAK ELO</span><span class="stat-val neon">1521 <img src="lvl7.jpg" alt="Level 7" class="faceit-lvl-img"></span></div>
+                    <div class="stat-item-box"><span class="stat-label">WINRATE</span><span class="stat-val">51.30%</span></div>
+                    <div class="stat-item-box"><span class="stat-label">MATCHES</span><span class="stat-val">193</span></div>
+                    <div class="stat-item-box"><span class="stat-label">HS%</span><span class="stat-val">46%</span></div>
+                    <div class="stat-item-box"><span class="stat-label">KD</span><span class="stat-val">1.21</span></div>
+                    <div class="stat-item-box"><span class="stat-label">ADR</span><span class="stat-val">97.5</span></div>
+                    <div class="stat-item-box">
+                        <span class="stat-label">RECENT</span>
+                        <div class="recent-matches">
+                            <span class="match-l">L</span><span class="match-w">W</span><span class="match-w">W</span><span class="match-l">L</span><span class="match-l">L</span>
+                        </div>
+                    </div>
+                `;
+            }
+        }
+
+        function switchTab(tab, event) {
+            const buttons = document.querySelectorAll('.action-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            const title = document.getElementById('panel-title');
+            const desc = document.getElementById('panel-desc');
+            const content = document.getElementById('panel-content');
+
+            if (tab === 'primary') {
+                title.textContent = "Primary Statistics";
+                desc.textContent = "Official performance overview and cyber match metrics.";
+                content.innerHTML = `
+                    <div class="stats-dashboard">
+                        <div class="stats-top-row">
+                            <div class="stats-card-box">
+                                <div class="stats-card-header">
+                                    <span>STEAM</span> &bull; Powerrr666yyy
+                                </div>
+                                <div class="stats-grid-2cols">
+                                    <div class="stat-item-box">
+                                        <span class="stat-label">CS FRIENDCODE</span>
+                                        <span class="stat-val" style="font-family: monospace;">AK5QJ-D8PG</span>
+                                    </div>
+                                    <div class="stat-item-box">
+                                        <span class="stat-label">VANITY</span>
+                                        <span class="stat-val">alwaysbetter2</span>
+                                    </div>
+                                    <div class="stat-item-box">
+                                        <span class="stat-label">REGISTERED</span>
+                                        <span class="stat-val">Dec 23, 2017</span>
+                                    </div>
+                                    <div class="stat-item-box">
+                                        <span class="stat-label">XP LEVEL</span>
+                                        <span class="stat-val">193</span>
+                                    </div>
+                                    <div class="stat-item-box">
+                                        <span class="stat-label">COMMENDATIONS</span>
+                                        <span class="stat-val">77 😊 70 👑 70 🎓</span>
+                                    </div>
+                                    <div class="stat-item-box">
+                                        <span class="stat-label">CS2 PLAYTIME</span>
+                                        <span class="stat-val">3,431h / 48h</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="stats-card-box">
+                                <div class="stats-card-header">
+                                    <span>CYBER</span> &bull; Performance Metrics
+                                </div>
+                                <div class="stats-grid-3cols" style="margin-bottom: 16px;">
+                                    <div class="stat-item-box"><span class="stat-label">AIM</span><span class="stat-val">83.9</span></div>
+                                    <div class="stat-item-box"><span class="stat-label">CLUTCH</span><span class="stat-val neon">+10.7</span></div>
+                                    <div class="stat-item-box"><span class="stat-label">RATING</span><span class="stat-val neon">+2.3</span></div>
+                                    <div class="stat-item-box"><span class="stat-label">TIME TO DMG</span><span class="stat-val">629ms</span></div>
+                                    <div class="stat-item-box"><span class="stat-label">WINRATE</span><span class="stat-val">43% / 40%</span></div>
+                                    <div class="stat-item-box"><span class="stat-label">UTILITY</span><span class="stat-val">51.6</span></div>
+                                </div>
+                                <div class="stats-grid-3cols">
+                                    <div class="stat-item-box"><span class="stat-label">OPENING</span><span class="stat-val neon">+2.5</span></div>
+                                    <div class="stat-item-box"><span class="stat-label">PARTY</span><span class="stat-val">2.55</span></div>
+                                    <div class="stat-item-box"><span class="stat-label">AVG HE DMG</span><span class="stat-val">9.2 / 1.5</span></div>
+                                    <div class="stat-item-box"><span class="stat-label">MATCHES</span><span class="stat-val">653 / 0.2%</span></div>
+                                    <div class="stat-item-box"><span class="stat-label">KD</span><span class="stat-val">1.12</span></div>
+                                    <div class="stat-item-box"><span class="stat-label">PEAK RATING</span><span class="stat-val neon">24,886</span></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="stats-bottom-row">
+                            <div class="stats-card-header" style="justify-content: space-between; border-bottom: none; margin-bottom: 10px; padding-bottom: 0;">
+                                <span>FACEIT &bull; 240hzTalent</span>
+                                <span style="font-size: 0.8rem; color: var(--text-muted);">🇭🇺 / hu</span>
+                            </div>
+                            <div class="faceit-tabs">
+                                <span class="faceit-tab" onclick="switchFaceitTab('csgo')">CSGO</span>
+                                <span class="faceit-tab active" onclick="switchFaceitTab('cs2')">CS2</span>
+                            </div>
+                            <div class="faceit-stats-grid" id="faceit-stats-grid">
+                                <div class="stat-item-box"><span class="stat-label">ELO</span><span class="stat-val neon">1467 <img src="lvl7.jpg" alt="Level 7" class="faceit-lvl-img"></span></div>
+                                <div class="stat-item-box"><span class="stat-label">PEAK ELO</span><span class="stat-val neon">1521 <img src="lvl7.jpg" alt="Level 7" class="faceit-lvl-img"></span></div>
+                                <div class="stat-item-box"><span class="stat-label">WINRATE</span><span class="stat-val">51.30%</span></div>
+                                <div class="stat-item-box"><span class="stat-label">MATCHES</span><span class="stat-val">193</span></div>
+                                <div class="stat-item-box"><span class="stat-label">HS%</span><span class="stat-val">46%</span></div>
+                                <div class="stat-item-box"><span class="stat-label">KD</span><span class="stat-val">1.21</span></div>
+                                <div class="stat-item-box"><span class="stat-label">ADR</span><span class="stat-val">97.5</span></div>
+                                <div class="stat-item-box">
+                                    <span class="stat-label">RECENT</span>
+                                    <div class="recent-matches">
+                                        <span class="match-l">L</span><span class="match-w">W</span><span class="match-w">W</span><span class="match-l">L</span><span class="match-l">L</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            } else if (tab === 'settings') {
+                title.textContent = "Player Settings";
+                desc.textContent = "Configuration details including sensitivity, resolution, and crosshair.";
+                content.innerHTML = `
+                    <div class="settings-grid">
+                        <div class="setting-card">
+                            <h3>Mouse & Resolution</h3>
+                            <div class="setting-item">
+                                <span>DPI:</span>
+                                <span class="setting-value">800</span>
+                            </div>
+                            <div class="setting-item">
+                                <span>Sensitivity:</span>
+                                <span class="setting-value">1.28</span>
+                            </div>
+                            <div class="setting-item">
+                                <span>Resolution:</span>
+                                <span class="setting-value">1280x960</span>
+                            </div>
+                            <div class="setting-item">
+                                <span>Aspect Ratio:</span>
+                                <span class="setting-value">4:3 Stretched</span>
+                            </div>
+                        </div>
+                        <div class="setting-card">
+                            <h3>Crosshair Code</h3>
+                            <div class="crosshair-code-box" id="crosshair-text">CSGO-JaEHu-LMuQP-8jUiN-3Xsbf-S5LsE</div>
+                            <button class="copy-btn" onclick="copyCrosshair()">Copy Code</button>
+                        </div>
+                    </div>
+                `;
+            }
+        }
+
+        function copyCrosshair() {
+            const code = "CSGO-JaEHu-LMuQP-8jUiN-3Xsbf-S5LsE";
+            navigator.clipboard.writeText(code).then(() => {
+                const btn = document.querySelector('.copy-btn');
+                btn.textContent = "Copied!";
+                setTimeout(() => {
+                    btn.textContent = "Copy Code";
+                }, 2000);
+            });
+        }
+    </script>
+</body>
+</html>
