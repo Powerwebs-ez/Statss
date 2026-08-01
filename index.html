@@ -728,12 +728,10 @@
                 durationTimeEl.textContent = formatTime(music.duration);
             }
 
-            // Újraengedélyezés, ha visszatekerik 18 másodperc elé
             if (music.currentTime < 17) {
                 atomicDropTriggered = false;
             }
 
-            // Pontosan 18 másodpercnél automatikusan elindul az ATOMIC drop effekt
             if (!atomicDropTriggered && music.currentTime >= 18.0 && music.currentTime < 18.5) {
                 atomicDropTriggered = true;
                 triggerAtomicDropEffect();
@@ -762,7 +760,6 @@
 
                     setTimeout(() => {
                         overlay.style.pointerEvents = 'none';
-                        overlay.style.clipPath = 'circle(150% at 50% 50%)';
                         atomicText.classList.remove('show-atomic');
                     }, 400);
 
