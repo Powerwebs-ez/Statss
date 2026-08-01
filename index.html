@@ -1,20 +1,22 @@
-<!DOCTYPE html>
+
+
+     <!DOCTYPE html>
 <html lang="hu">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Powerrr666yyy | Elite Cyber Lounge</title>
+    <title>Powerrr666yyy | Elite Synthwave Lounge</title>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-deep: #050508;
-            --accent-neon: #00ffcc;
-            --accent-glow: rgba(0, 255, 204, 0.35);
-            --secondary-neon: #ff0055;
-            --glass-bg: rgba(12, 12, 20, 0.7);
-            --glass-border: rgba(0, 255, 204, 0.2);
-            --text-main: #f0f4f8;
-            --text-muted: #8a99ad;
+            --bg-deep: #07030f;
+            --accent-neon: #bf00ff;
+            --accent-glow: rgba(191, 0, 255, 0.45);
+            --secondary-neon: #ff007f;
+            --glass-bg: rgba(18, 10, 30, 0.75);
+            --glass-border: rgba(191, 0, 255, 0.25);
+            --text-main: #f5f0f8;
+            --text-muted: #9c8aa7;
         }
 
         * {
@@ -34,7 +36,7 @@
         ::-webkit-scrollbar-thumb {
             background: var(--accent-neon);
             border-radius: 4px;
-            box-shadow: 0 0 10px var(--accent-neon);
+            box-shadow: 0 0 15px var(--accent-neon);
         }
 
         body {
@@ -53,7 +55,7 @@
             display: block;
             position: fixed;
             top: 0; left: 0; bottom: 0; right: 0;
-            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.3) 50%), linear-gradient(90deg, rgba(191, 0, 255, 0.03), rgba(255, 0, 127, 0.01), rgba(0, 0, 255, 0.03));
             z-index: 999;
             background-size: 100% 3px, 6px 100%;
             pointer-events: none;
@@ -68,7 +70,7 @@
             height: 100vh;
             pointer-events: none;
             z-index: 1;
-            background: radial-gradient(circle 600px at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(0, 255, 204, 0.06), transparent 70%);
+            background: radial-gradient(circle 700px at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(191, 0, 255, 0.08), transparent 70%);
         }
 
         #bg-canvas {
@@ -107,7 +109,7 @@
         /* Header & Avatar Redesign */
         header {
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 35px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -115,19 +117,19 @@
         }
 
         .profile-avatar-container {
-            width: 140px;
-            height: 140px;
+            width: 150px;
+            height: 150px;
             border-radius: 50%;
             overflow: hidden;
-            border: 2px solid var(--accent-neon);
-            box-shadow: 0 0 40px var(--accent-glow), inset 0 0 20px rgba(0, 255, 204, 0.5);
+            border: 3px solid var(--accent-neon);
+            box-shadow: 0 0 50px var(--accent-glow), inset 0 0 25px rgba(191, 0, 255, 0.6);
             position: relative;
             animation: cyberPulse 4s ease-in-out infinite alternate;
         }
 
         @keyframes cyberPulse {
-            0% { box-shadow: 0 0 20px rgba(0, 255, 204, 0.3), inset 0 0 10px rgba(0, 255, 204, 0.2); transform: scale(1); }
-            100% { box-shadow: 0 0 50px rgba(0, 255, 204, 0.7), inset 0 0 25px rgba(0, 255, 204, 0.6); transform: scale(1.04); }
+            0% { box-shadow: 0 0 25px rgba(191, 0, 255, 0.4), inset 0 0 15px rgba(191, 0, 255, 0.3); transform: scale(1); }
+            100% { box-shadow: 0 0 60px rgba(191, 0, 255, 0.8), inset 0 0 30px rgba(255, 0, 127, 0.5); transform: scale(1.05); }
         }
 
         .profile-avatar-container img {
@@ -139,11 +141,11 @@
 
         header h1 {
             font-family: 'Orbitron', sans-serif;
-            font-size: 3rem;
+            font-size: 3.2rem;
             font-weight: 900;
-            letter-spacing: 3px;
+            letter-spacing: 4px;
             color: #fff;
-            text-shadow: 0 0 20px var(--accent-neon), 0 0 40px rgba(0, 255, 204, 0.4);
+            text-shadow: 0 0 25px var(--accent-neon), 0 0 50px rgba(191, 0, 255, 0.5);
             position: relative;
         }
 
@@ -155,129 +157,31 @@
         }
 
         .badge {
-            background: rgba(0, 255, 204, 0.08);
+            background: rgba(191, 0, 255, 0.1);
             border: 1px solid var(--accent-neon);
-            color: var(--accent-neon);
-            padding: 6px 16px;
-            border-radius: 20px;
-            font-family: 'Orbitron', sans-serif;
-            font-size: 0.75rem;
-            font-weight: 700;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            box-shadow: 0 0 15px rgba(0, 255, 204, 0.2);
-        }
-
-        /* Social Bar */
-        .social-links-bar {
-            display: flex;
-            justify-content: center;
-            gap: 16px;
-            margin-bottom: 25px;
-            flex-wrap: wrap;
-        }
-
-        .social-icon-btn {
-            width: 50px;
-            height: 50px;
-            border-radius: 14px;
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            backdrop-filter: blur(16px);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            text-decoration: none;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-        }
-
-        .social-icon-btn img {
-            width: 24px;
-            height: 24px;
-            object-fit: contain;
-            transition: transform 0.3s;
-        }
-
-        .social-icon-btn:hover {
-            border-color: var(--accent-neon);
-            background: rgba(0, 255, 204, 0.12);
-            transform: translateY(-4px) scale(1.05);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.6), 0 0 20px var(--accent-glow);
-        }
-
-        .social-icon-btn:hover img {
-            transform: scale(1.2);
-        }
-
-        /* Community Banner */
-        .community-section {
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            backdrop-filter: blur(16px);
-            border-radius: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 25px;
-            padding: 16px 24px;
-            flex-wrap: wrap;
-            gap: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
-            position: relative;
-        }
-
-        .community-info {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-        }
-
-        .community-icon {
-            font-size: 1.8rem;
-            color: var(--accent-neon);
-            filter: drop-shadow(0 0 10px var(--accent-neon));
-        }
-
-        .community-text h3 {
-            font-family: 'Orbitron', sans-serif;
-            color: #fff;
-            font-size: 1rem;
-            letter-spacing: 1px;
-            margin-bottom: 2px;
-        }
-
-        .community-text p {
-            color: var(--text-muted);
-            font-size: 0.8rem;
-        }
-
-        .admin-badge-highlight {
-            color: var(--secondary-neon);
+            color: #e2a1ff;
+            padding: 8px 20px;
+            border-radius: 25px;
             font-family: 'Orbitron', sans-serif;
             font-size: 0.8rem;
             font-weight: 700;
             letter-spacing: 2px;
             text-transform: uppercase;
-            text-shadow: 0 0 10px rgba(255, 0, 85, 0.5);
-            background: rgba(255, 0, 85, 0.1);
-            padding: 8px 16px;
-            border-radius: 10px;
-            border: 1px solid rgba(255, 0, 85, 0.3);
+            box-shadow: 0 0 20px rgba(191, 0, 255, 0.25);
         }
 
         /* Audio Player Bar */
         .transparent-player {
             background: var(--glass-bg);
             border: 1px solid var(--glass-border);
-            backdrop-filter: blur(16px);
-            border-radius: 16px;
-            padding: 14px 24px;
+            backdrop-filter: blur(20px);
+            border-radius: 18px;
+            padding: 16px 28px;
             margin-bottom: 30px;
             display: flex;
             align-items: center;
             gap: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.6);
             position: relative;
         }
 
@@ -300,7 +204,7 @@
         .transparent-player.playing .eq-bar {
             background: var(--accent-neon);
             animation: eqDance 0.8s infinite alternate ease-in-out;
-            box-shadow: 0 0 10px var(--accent-neon);
+            box-shadow: 0 0 12px var(--accent-neon);
         }
 
         .transparent-player.playing .eq-bar:nth-child(1) { animation-delay: 0.1s; }
@@ -336,7 +240,7 @@
             background: var(--accent-neon);
             width: 0%;
             border-radius: 3px;
-            box-shadow: 0 0 12px var(--accent-neon);
+            box-shadow: 0 0 15px var(--accent-neon);
         }
 
         .player-controls {
@@ -366,7 +270,7 @@
         .control-icon-btn.main-play {
             color: var(--accent-neon);
             font-size: 1.3rem;
-            text-shadow: 0 0 12px var(--accent-neon);
+            text-shadow: 0 0 15px var(--accent-neon);
         }
 
         /* 2. Interaktív Hangerőszabályzó Csúszka stílus */
@@ -393,7 +297,7 @@
             height: 11px;
             border-radius: 50%;
             background: var(--accent-neon);
-            box-shadow: 0 0 8px var(--accent-neon);
+            box-shadow: 0 0 10px var(--accent-neon);
             cursor: crosshair;
         }
 
@@ -409,9 +313,9 @@
         .action-btn {
             background: var(--glass-bg);
             border: 1px solid var(--glass-border);
-            backdrop-filter: blur(16px);
+            backdrop-filter: blur(20px);
             color: var(--text-muted);
-            padding: 12px 28px;
+            padding: 12px 30px;
             border-radius: 14px;
             font-family: 'Orbitron', sans-serif;
             font-size: 0.85rem;
@@ -422,23 +326,23 @@
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
             overflow: hidden;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
         }
 
         .action-btn:hover {
             border-color: var(--accent-neon);
             color: #fff;
-            background: rgba(0, 255, 204, 0.08);
-            transform: translateY(-2px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.5), 0 0 20px var(--accent-glow);
+            background: rgba(191, 0, 255, 0.12);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.6), 0 0 25px var(--accent-glow);
         }
 
         .action-btn.active {
-            background: rgba(0, 255, 204, 0.15);
+            background: rgba(191, 0, 255, 0.2);
             border-color: var(--accent-neon);
-            color: var(--accent-neon);
-            text-shadow: 0 0 10px var(--accent-neon);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.5), 0 0 25px var(--accent-glow);
+            color: #e2a1ff;
+            text-shadow: 0 0 12px var(--accent-neon);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.6), 0 0 30px var(--accent-glow);
         }
 
         /* 9. Kattintáskor Felszabaduló Shockwave (Lökéshullám) */
@@ -449,8 +353,8 @@
             animation: shockwaveAnim 0.6s cubic-bezier(0, 0.2, 0.8, 1) forwards;
             pointer-events: none;
             border: 2px solid var(--accent-neon);
-            box-shadow: 0 0 15px var(--accent-neon);
-            background: rgba(0, 255, 204, 0.2);
+            box-shadow: 0 0 20px var(--accent-neon);
+            background: rgba(191, 0, 255, 0.25);
         }
 
         @keyframes shockwaveAnim {
@@ -461,34 +365,33 @@
         /* Main Content Container */
         .content-panel {
             background: var(--glass-bg);
-            backdrop-filter: blur(25px);
+            backdrop-filter: blur(30px);
             border: 1px solid var(--glass-border);
             border-radius: 24px;
-            padding: 35px;
-            box-shadow: 0 30px 60px rgba(0,0,0,0.7), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            box-shadow: 0 35px 70px rgba(0,0,0,0.8), inset 0 1px 0 rgba(255, 255, 255, 0.15);
             transition: transform 0.1s ease-out, border-color 0.3s ease, box-shadow 0.3s ease;
             position: relative;
             overflow: hidden;
         }
 
         /* 5. HUD / Sci-Fi Sarokdekorációk a panelen */
-        .content-panel::before, .content-panel::after,
-        .community-section::before, .community-section::after {
+        .content-panel::before, .content-panel::after {
             content: "";
             position: absolute;
-            width: 10px;
-            height: 10px;
+            width: 12px;
+            height: 12px;
             border-color: var(--accent-neon);
             border-style: solid;
             pointer-events: none;
-            opacity: 0.6;
+            opacity: 0.8;
         }
-        .content-panel::before { top: 8px; left: 8px; border-width: 2px 0 0 2px; }
-        .content-panel::after { top: 8px; right: 8px; border-width: 2px 2px 0 0; }
+        .content-panel::before { top: 10px; left: 10px; border-width: 2px 0 0 2px; }
+        .content-panel::after { top: 10px; right: 10px; border-width: 2px 2px 0 0; }
 
         .content-panel h2 {
             font-family: 'Orbitron', sans-serif;
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             color: #fff;
             margin-bottom: 8px;
             letter-spacing: 2px;
@@ -497,7 +400,7 @@
         .content-panel p {
             color: var(--text-muted);
             font-size: 0.9rem;
-            margin-bottom: 25px;
+            margin-bottom: 30px;
         }
 
         /* Dashboard Elements */
@@ -515,18 +418,18 @@
         }
 
         .stats-card-box {
-            background: rgba(18, 18, 28, 0.6);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            border-radius: 16px;
-            padding: 22px;
-            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
-            backdrop-filter: blur(12px);
+            background: rgba(12, 6, 22, 0.7);
+            border: 1px solid rgba(191, 0, 255, 0.15);
+            border-radius: 18px;
+            padding: 24px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+            backdrop-filter: blur(15px);
             transition: border-color 0.3s, box-shadow 0.3s;
         }
 
         .stats-card-box:hover {
-            border-color: rgba(0, 255, 204, 0.4);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.4), 0 0 15px rgba(0, 255, 204, 0.1);
+            border-color: rgba(191, 0, 255, 0.6);
+            box-shadow: 0 20px 45px rgba(0,0,0,0.5), 0 0 20px rgba(191, 0, 255, 0.2);
         }
 
         .stats-card-header {
@@ -539,7 +442,7 @@
             font-size: 1rem;
             color: #fff;
             letter-spacing: 1px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
             padding-bottom: 10px;
         }
 
@@ -573,16 +476,8 @@
         }
 
         .stat-val.neon {
-            color: var(--accent-neon);
-            text-shadow: 0 0 10px rgba(0, 255, 204, 0.4);
-        }
-
-        .stat-val img.faceit-lvl-img {
-            height: 1.25rem;
-            width: auto;
-            object-fit: contain;
-            vertical-align: middle;
-            display: inline-block;
+            color: #e2a1ff;
+            text-shadow: 0 0 12px rgba(191, 0, 255, 0.6);
         }
 
         .stats-grid-3cols {
@@ -592,73 +487,19 @@
         }
 
         .stats-bottom-row {
-            background: rgba(18, 18, 28, 0.6);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            border-radius: 16px;
-            padding: 22px;
-            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
-            backdrop-filter: blur(12px);
+            background: rgba(12, 6, 22, 0.7);
+            border: 1px solid rgba(191, 0, 255, 0.15);
+            border-radius: 18px;
+            padding: 24px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+            backdrop-filter: blur(15px);
             transition: border-color 0.3s, box-shadow 0.3s;
         }
 
         .stats-bottom-row:hover {
-            border-color: rgba(0, 255, 204, 0.4);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.4), 0 0 15px rgba(0, 255, 204, 0.1);
+            border-color: rgba(191, 0, 255, 0.6);
+            box-shadow: 0 20px 45px rgba(0,0,0,0.5), 0 0 20px rgba(191, 0, 255, 0.2);
         }
-
-        .faceit-tabs {
-            display: flex;
-            gap: 20px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-            padding-bottom: 10px;
-            margin-bottom: 18px;
-            font-family: 'Orbitron', sans-serif;
-            font-size: 0.85rem;
-        }
-
-        .faceit-tab {
-            color: var(--text-muted);
-            font-weight: 600;
-            position: relative;
-            padding-bottom: 4px;
-            cursor: crosshair;
-            transition: color 0.2s;
-        }
-
-        .faceit-tab:hover {
-            color: #fff;
-        }
-
-        .faceit-tab.active {
-            color: var(--accent-neon);
-        }
-
-        .faceit-tab.active::after {
-            content: '';
-            position: absolute;
-            bottom: -11px;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background: var(--accent-neon);
-            box-shadow: 0 0 8px var(--accent-neon);
-        }
-
-        .faceit-stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-            gap: 18px;
-        }
-
-        .recent-matches {
-            display: flex;
-            gap: 6px;
-            font-weight: 700;
-            letter-spacing: 2px;
-        }
-
-        .match-l { color: var(--secondary-neon); text-shadow: 0 0 8px rgba(255, 0, 85, 0.4); }
-        .match-w { color: var(--accent-neon); text-shadow: 0 0 8px rgba(0, 255, 204, 0.4); }
 
         /* Settings Grid Panel */
         .settings-grid {
@@ -669,19 +510,19 @@
         }
 
         .setting-card {
-            background: rgba(18, 18, 28, 0.6);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            backdrop-filter: blur(12px);
-            border-radius: 16px;
-            padding: 20px;
+            background: rgba(12, 6, 22, 0.7);
+            border: 1px solid rgba(191, 0, 255, 0.15);
+            backdrop-filter: blur(15px);
+            border-radius: 18px;
+            padding: 24px;
             display: flex;
             flex-direction: column;
-            gap: 14px;
+            gap: 16px;
         }
 
         .setting-card h3 {
             font-family: 'Orbitron', sans-serif;
-            color: var(--accent-neon);
+            color: #e2a1ff;
             font-size: 1rem;
             letter-spacing: 1px;
         }
@@ -700,22 +541,22 @@
         }
 
         .crosshair-code-box {
-            background: rgba(0, 0, 0, 0.5);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            padding: 10px 14px;
-            border-radius: 8px;
+            background: rgba(0, 0, 0, 0.6);
+            border: 1px solid rgba(191, 0, 255, 0.2);
+            padding: 12px 16px;
+            border-radius: 10px;
             font-family: monospace;
             font-size: 0.85rem;
-            color: var(--accent-neon);
+            color: #e2a1ff;
             word-break: break-all;
         }
 
         .copy-btn {
             background: var(--glass-bg);
             border: 1px solid var(--accent-neon);
-            color: var(--accent-neon);
-            padding: 9px 18px;
-            border-radius: 8px;
+            color: #e2a1ff;
+            padding: 10px 20px;
+            border-radius: 10px;
             font-family: 'Orbitron', sans-serif;
             font-size: 0.75rem;
             font-weight: 700;
@@ -724,13 +565,13 @@
             transition: all 0.2s ease;
             text-transform: uppercase;
             align-self: flex-start;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.4);
         }
 
         .copy-btn:hover {
             background: var(--accent-neon);
-            color: #050508;
-            box-shadow: 0 0 20px var(--accent-glow);
+            color: #07030f;
+            box-shadow: 0 0 25px var(--accent-glow);
         }
     </style>
 </head>
@@ -747,42 +588,13 @@
                 <img src="Powerrrpfp.jpg" alt="Powerrr666yyy Avatar">
             </div>
             <div>
-                <!-- 2. Glitch effekt a néven -->
                 <h1 id="glitch-title" data-text="Powerrr666yyy">Powerrr666yyy</h1>
                 <div class="badges-wrapper" style="margin-top: 15px;">
                     <div class="badge">⚡ Elite Status</div>
-                    <div class="badge">🏆 Cyber Dominance</div>
+                    <div class="badge">🏆 Synthwave Dominance</div>
                 </div>
             </div>
         </header>
-
-        <div class="social-links-bar">
-            <a href="https://steamcommunity.com/id/alwaysbetter2" target="_blank" class="social-icon-btn" title="Steam">
-                <img src="steam.jpg" alt="Steam">
-            </a>
-            <a href="https://www.faceit.com/en/players/240hzTalent" target="_blank" class="social-icon-btn" title="Faceit">
-                <img src="faceit.jpg" alt="Faceit">
-            </a>
-            <a href="https://discord.gg/ubec" target="_blank" class="social-icon-btn" title="Discord">
-                <img src="discord.jpg" alt="Discord">
-            </a>
-            <a href="https://ubec.hu/" target="_blank" class="social-icon-btn" title="UBEC">
-                <img src="ubec.jpg" alt="UBEC">
-            </a>
-        </div>
-
-        <div class="community-section">
-            <div class="community-info">
-                <div class="community-icon">🛡️</div>
-                <div class="community-text">
-                    <h3>Unbreakable Community</h3>
-                    <p>CS2 Public Server Network</p>
-                </div>
-            </div>
-            <div class="admin-badge-highlight">
-                👑 Admin Controller
-            </div>
-        </div>
 
         <div class="transparent-player" id="player-bar">
             <div class="eq-visualizer">
@@ -812,7 +624,7 @@
             <button class="action-btn active" onclick="switchTab('primary', event)">⚡ Primary Stats</button>
             <button class="action-btn" onclick="switchTab('settings', event)">⚙️ Settings</button>
             <!-- 8. Matrix Rain Háttér Váltó Gomb -->
-            <button class="action-btn" onclick="toggleMatrixRain(event)">🟢 Matrix Rain</button>
+            <button class="action-btn" onclick="toggleMatrixRain(event)">🟣 Neon Matrix</button>
         </div>
 
         <!-- 3D Tilt kártya konténer -->
@@ -825,23 +637,23 @@
                     <div class="stats-top-row">
                         <div class="stats-card-box">
                             <div class="stats-card-header">
-                                <span>STEAM</span> &bull; Powerrr666yyy
+                                <span>PROFILE</span> &bull; Powerrr666yyy
                             </div>
                             <div class="stats-grid-2cols">
                                 <div class="stat-item-box">
-                                    <span class="stat-label">CS FRIENDCODE</span>
+                                    <span class="stat-label">FRIENDCODE</span>
                                     <span class="stat-val" style="font-family: monospace;">AK5QJ-D8PG</span>
                                 </div>
                                 <div class="stat-item-box">
-                                    <span class="stat-label">VANITY</span>
-                                    <span class="stat-val">alwaysbetter2</span>
+                                    <span class="stat-label">STATUS</span>
+                                    <span class="stat-val">Online</span>
                                 </div>
                                 <div class="stat-item-box">
                                     <span class="stat-label">REGISTERED</span>
                                     <span class="stat-val">Dec 23, 2017</span>
                                 </div>
                                 <div class="stat-item-box">
-                                    <span class="stat-label">XP LEVEL</span>
+                                    <span class="stat-label">LEVEL</span>
                                     <span class="stat-val">193</span>
                                 </div>
                                 <div class="stat-item-box">
@@ -849,57 +661,31 @@
                                     <span class="stat-val">77 😊 70 👑 70 🎓</span>
                                 </div>
                                 <div class="stat-item-box">
-                                    <span class="stat-label">CS2 PLAYTIME</span>
-                                    <span class="stat-val">3,431h / 48h</span>
+                                    <span class="stat-label">PLAYTIME</span>
+                                    <span class="stat-val">3,431h</span>
                                 </div>
                             </div>
                         </div>
 
                         <div class="stats-card-box">
                             <div class="stats-card-header">
-                                <span>CYBER</span> &bull; Performance Metrics
+                                <span>PERFORMANCE</span> &bull; Core Metrics
                             </div>
                             <div class="stats-grid-3cols" style="margin-bottom: 16px;">
                                 <div class="stat-item-box"><span class="stat-label">AIM</span><span class="stat-val">83.9</span></div>
                                 <div class="stat-item-box"><span class="stat-label">CLUTCH</span><span class="stat-val neon">+10.7</span></div>
                                 <div class="stat-item-box"><span class="stat-label">RATING</span><span class="stat-val neon">+2.3</span></div>
                                 <div class="stat-item-box"><span class="stat-label">TIME TO DMG</span><span class="stat-val">629ms</span></div>
-                                <div class="stat-item-box"><span class="stat-label">WINRATE</span><span class="stat-val">43% / 40%</span></div>
+                                <div class="stat-item-box"><span class="stat-label">WINRATE</span><span class="stat-val">43%</span></div>
                                 <div class="stat-item-box"><span class="stat-label">UTILITY</span><span class="stat-val">51.6</span></div>
                             </div>
                             <div class="stats-grid-3cols">
                                 <div class="stat-item-box"><span class="stat-label">OPENING</span><span class="stat-val neon">+2.5</span></div>
                                 <div class="stat-item-box"><span class="stat-label">PARTY</span><span class="stat-val">2.55</span></div>
-                                <div class="stat-item-box"><span class="stat-label">AVG HE DMG</span><span class="stat-val">9.2 / 1.5</span></div>
-                                <div class="stat-item-box"><span class="stat-label">MATCHES</span><span class="stat-val">653 / 0.2%</span></div>
+                                <div class="stat-item-box"><span class="stat-label">AVG DMG</span><span class="stat-val">9.2</span></div>
+                                <div class="stat-item-box"><span class="stat-label">MATCHES</span><span class="stat-val">653</span></div>
                                 <div class="stat-item-box"><span class="stat-label">KD</span><span class="stat-val">1.12</span></div>
                                 <div class="stat-item-box"><span class="stat-label">PEAK RATING</span><span class="stat-val neon">24,886</span></div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="stats-bottom-row" id="faceit-section-container">
-                        <div class="stats-card-header" style="justify-content: space-between; border-bottom: none; margin-bottom: 10px; padding-bottom: 0;">
-                            <span>FACEIT &bull; 240hzTalent</span>
-                            <span style="font-size: 0.8rem; color: var(--text-muted);">🇭🇺 / hu</span>
-                        </div>
-                        <div class="faceit-tabs">
-                            <span class="faceit-tab" onclick="switchFaceitTab('csgo')">CSGO</span>
-                            <span class="faceit-tab active" onclick="switchFaceitTab('cs2')">CS2</span>
-                        </div>
-                        <div class="faceit-stats-grid" id="faceit-stats-grid">
-                            <div class="stat-item-box"><span class="stat-label">ELO</span><span class="stat-val neon">1467 <img src="lvl7.jpg" alt="Level 7" class="faceit-lvl-img"></span></div>
-                            <div class="stat-item-box"><span class="stat-label">PEAK ELO</span><span class="stat-val neon">1521 <img src="lvl7.jpg" alt="Level 7" class="faceit-lvl-img"></span></div>
-                            <div class="stat-item-box"><span class="stat-label">WINRATE</span><span class="stat-val">51.30%</span></div>
-                            <div class="stat-item-box"><span class="stat-label">MATCHES</span><span class="stat-val">193</span></div>
-                            <div class="stat-item-box"><span class="stat-label">HS%</span><span class="stat-val">46%</span></div>
-                            <div class="stat-item-box"><span class="stat-label">KD</span><span class="stat-val">1.21</span></div>
-                            <div class="stat-item-box"><span class="stat-label">ADR</span><span class="stat-val">97.5</span></div>
-                            <div class="stat-item-box">
-                                <span class="stat-label">RECENT</span>
-                                <div class="recent-matches">
-                                    <span class="match-l">L</span><span class="match-w">W</span><span class="match-w">W</span><span class="match-l">L</span><span class="match-l">L</span>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -911,7 +697,7 @@
     <script>
         // 9. Lökéshullám (Shockwave) effekt kattintásra gombokon / interaktív elemeken
         document.addEventListener('click', function(e) {
-            const target = e.target.closest('.action-btn, .copy-btn, .social-icon-btn');
+            const target = e.target.closest('.action-btn, .copy-btn');
             if (target) {
                 const rect = target.getBoundingClientRect();
                 const x = e.clientX - rect.left;
@@ -1028,7 +814,7 @@
             return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
         }
 
-        // Cyber Grid Background Particles Canvas
+        // Background Particles Canvas
         const canvas = document.getElementById('bg-canvas');
         const ctx = canvas.getContext('2d');
 
@@ -1058,7 +844,7 @@
                 p.y -= p.speedY;
                 if (p.y < 0) p.y = height;
 
-                ctx.fillStyle = `rgba(0, 255, 204, ${p.alpha})`;
+                ctx.fillStyle = `rgba(191, 0, 255, ${p.alpha})`;
                 ctx.beginPath();
                 ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
                 ctx.fill();
@@ -1069,7 +855,7 @@
 
         animate();
 
-        // 8. Matrix Rain logika
+        // 8. Matrix Rain logika (Lilás Synthwave kiadás)
         const matrixCanvas = document.getElementById('matrix-canvas');
         const mCtx = matrixCanvas.getContext('2d');
         let matrixActive = false;
@@ -1081,12 +867,12 @@
             if (matrixActive) {
                 matrixCanvas.classList.add('active');
                 btn.classList.add('active');
-                btn.textContent = "🟢 Matrix: ON";
+                btn.textContent = "🟣 Matrix: ON";
                 startMatrixRain();
             } else {
                 matrixCanvas.classList.remove('active');
                 btn.classList.remove('active');
-                btn.textContent = "🟢 Matrix Rain";
+                btn.textContent = "🟣 Neon Matrix";
                 clearInterval(matrixInterval);
                 mCtx.clearRect(0, 0, matrixCanvas.width, matrixCanvas.height);
             }
@@ -1106,9 +892,9 @@
             }
 
             matrixInterval = setInterval(() => {
-                mCtx.fillStyle = 'rgba(5, 5, 8, 0.05)';
+                mCtx.fillStyle = 'rgba(7, 3, 15, 0.05)';
                 mCtx.fillRect(0, 0, matrixCanvas.width, matrixCanvas.height);
-                mCtx.fillStyle = '#00ffcc';
+                mCtx.fillStyle = '#bf00ff';
                 mCtx.font = `${fontSize}px monospace`;
 
                 for (let i = 0; i < rainDrops.length; i++) {
@@ -1121,42 +907,6 @@
                     rainDrops[i]++;
                 }
             }, 30);
-        }
-
-        function switchFaceitTab(game) {
-            const tabs = document.querySelectorAll('.faceit-tab');
-            tabs.forEach(t => t.classList.remove('active'));
-            
-            const grid = document.getElementById('faceit-stats-grid');
-
-            if (game === 'csgo') {
-                tabs[0].classList.add('active');
-                grid.innerHTML = `
-                    <div class="stat-item-box"><span class="stat-label">ELO</span><span class="stat-val neon">1004 <img src="lvl7.jpg" alt="Level 7" class="faceit-lvl-img"></span></div>
-                    <div class="stat-item-box"><span class="stat-label">WINRATE</span><span class="stat-val">52.94%</span></div>
-                    <div class="stat-item-box"><span class="stat-label">HS%</span><span class="stat-val">35%</span></div>
-                    <div class="stat-item-box"><span class="stat-label">PEAK ELO</span><span class="stat-val neon">1034 <img src="lvl7.jpg" alt="Level 7" class="faceit-lvl-img"></span></div>
-                    <div class="stat-item-box"><span class="stat-label">MATCHES</span><span class="stat-val">17</span></div>
-                    <div class="stat-item-box"><span class="stat-label">KD</span><span class="stat-val">0.85</span></div>
-                `;
-            } else {
-                tabs[1].classList.add('active');
-                grid.innerHTML = `
-                    <div class="stat-item-box"><span class="stat-label">ELO</span><span class="stat-val neon">1467 <img src="lvl7.jpg" alt="Level 7" class="faceit-lvl-img"></span></div>
-                    <div class="stat-item-box"><span class="stat-label">PEAK ELO</span><span class="stat-val neon">1521 <img src="lvl7.jpg" alt="Level 7" class="faceit-lvl-img"></span></div>
-                    <div class="stat-item-box"><span class="stat-label">WINRATE</span><span class="stat-val">51.30%</span></div>
-                    <div class="stat-item-box"><span class="stat-label">MATCHES</span><span class="stat-val">193</span></div>
-                    <div class="stat-item-box"><span class="stat-label">HS%</span><span class="stat-val">46%</span></div>
-                    <div class="stat-item-box"><span class="stat-label">KD</span><span class="stat-val">1.21</span></div>
-                    <div class="stat-item-box"><span class="stat-label">ADR</span><span class="stat-val">97.5</span></div>
-                    <div class="stat-item-box">
-                        <span class="stat-label">RECENT</span>
-                        <div class="recent-matches">
-                            <span class="match-l">L</span><span class="match-w">W</span><span class="match-w">W</span><span class="match-l">L</span><span class="match-l">L</span>
-                        </div>
-                    </div>
-                `;
-            }
         }
 
         function switchTab(tab, event) {
@@ -1178,23 +928,23 @@
                         <div class="stats-top-row">
                             <div class="stats-card-box">
                                 <div class="stats-card-header">
-                                    <span>STEAM</span> &bull; Powerrr666yyy
+                                    <span>PROFILE</span> &bull; Powerrr666yyy
                                 </div>
                                 <div class="stats-grid-2cols">
                                     <div class="stat-item-box">
-                                        <span class="stat-label">CS FRIENDCODE</span>
+                                        <span class="stat-label">FRIENDCODE</span>
                                         <span class="stat-val" style="font-family: monospace;">AK5QJ-D8PG</span>
                                     </div>
                                     <div class="stat-item-box">
-                                        <span class="stat-label">VANITY</span>
-                                        <span class="stat-val">alwaysbetter2</span>
+                                        <span class="stat-label">STATUS</span>
+                                        <span class="stat-val">Online</span>
                                     </div>
                                     <div class="stat-item-box">
                                         <span class="stat-label">REGISTERED</span>
                                         <span class="stat-val">Dec 23, 2017</span>
                                     </div>
                                     <div class="stat-item-box">
-                                        <span class="stat-label">XP LEVEL</span>
+                                        <span class="stat-label">LEVEL</span>
                                         <span class="stat-val">193</span>
                                     </div>
                                     <div class="stat-item-box">
@@ -1202,55 +952,30 @@
                                         <span class="stat-val">77 😊 70 👑 70 🎓</span>
                                     </div>
                                     <div class="stat-item-box">
-                                        <span class="stat-label">CS2 PLAYTIME</span>
-                                        <span class="stat-val">3,431h / 48h</span>
+                                        <span class="stat-label">PLAYTIME</span>
+                                        <span class="stat-val">3,431h</span>
                                     </div>
                                 </div>
                             </div>
                             <div class="stats-card-box">
                                 <div class="stats-card-header">
-                                    <span>CYBER</span> &bull; Performance Metrics
+                                    <span>PERFORMANCE</span> &bull; Core Metrics
                                 </div>
                                 <div class="stats-grid-3cols" style="margin-bottom: 16px;">
                                     <div class="stat-item-box"><span class="stat-label">AIM</span><span class="stat-val">83.9</span></div>
                                     <div class="stat-item-box"><span class="stat-label">CLUTCH</span><span class="stat-val neon">+10.7</span></div>
                                     <div class="stat-item-box"><span class="stat-label">RATING</span><span class="stat-val neon">+2.3</span></div>
                                     <div class="stat-item-box"><span class="stat-label">TIME TO DMG</span><span class="stat-val">629ms</span></div>
-                                    <div class="stat-item-box"><span class="stat-label">WINRATE</span><span class="stat-val">43% / 40%</span></div>
+                                    <div class="stat-item-box"><span class="stat-label">WINRATE</span><span class="stat-val">43%</span></div>
                                     <div class="stat-item-box"><span class="stat-label">UTILITY</span><span class="stat-val">51.6</span></div>
                                 </div>
                                 <div class="stats-grid-3cols">
                                     <div class="stat-item-box"><span class="stat-label">OPENING</span><span class="stat-val neon">+2.5</span></div>
                                     <div class="stat-item-box"><span class="stat-label">PARTY</span><span class="stat-val">2.55</span></div>
-                                    <div class="stat-item-box"><span class="stat-label">AVG HE DMG</span><span class="stat-val">9.2 / 1.5</span></div>
-                                    <div class="stat-item-box"><span class="stat-label">MATCHES</span><span class="stat-val">653 / 0.2%</span></div>
+                                    <div class="stat-item-box"><span class="stat-label">AVG DMG</span><span class="stat-val">9.2</span></div>
+                                    <div class="stat-item-box"><span class="stat-label">MATCHES</span><span class="stat-val">653</span></div>
                                     <div class="stat-item-box"><span class="stat-label">KD</span><span class="stat-val">1.12</span></div>
                                     <div class="stat-item-box"><span class="stat-label">PEAK RATING</span><span class="stat-val neon">24,886</span></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="stats-bottom-row">
-                            <div class="stats-card-header" style="justify-content: space-between; border-bottom: none; margin-bottom: 10px; padding-bottom: 0;">
-                                <span>FACEIT &bull; 240hzTalent</span>
-                                <span style="font-size: 0.8rem; color: var(--text-muted);">🇭🇺 / hu</span>
-                            </div>
-                            <div class="faceit-tabs">
-                                <span class="faceit-tab" onclick="switchFaceitTab('csgo')">CSGO</span>
-                                <span class="faceit-tab active" onclick="switchFaceitTab('cs2')">CS2</span>
-                            </div>
-                            <div class="faceit-stats-grid" id="faceit-stats-grid">
-                                <div class="stat-item-box"><span class="stat-label">ELO</span><span class="stat-val neon">1467 <img src="lvl7.jpg" alt="Level 7" class="faceit-lvl-img"></span></div>
-                                <div class="stat-item-box"><span class="stat-label">PEAK ELO</span><span class="stat-val neon">1521 <img src="lvl7.jpg" alt="Level 7" class="faceit-lvl-img"></span></div>
-                                <div class="stat-item-box"><span class="stat-label">WINRATE</span><span class="stat-val">51.30%</span></div>
-                                <div class="stat-item-box"><span class="stat-label">MATCHES</span><span class="stat-val">193</span></div>
-                                <div class="stat-item-box"><span class="stat-label">HS%</span><span class="stat-val">46%</span></div>
-                                <div class="stat-item-box"><span class="stat-label">KD</span><span class="stat-val">1.21</span></div>
-                                <div class="stat-item-box"><span class="stat-label">ADR</span><span class="stat-val">97.5</span></div>
-                                <div class="stat-item-box">
-                                    <span class="stat-label">RECENT</span>
-                                    <div class="recent-matches">
-                                        <span class="match-l">L</span><span class="match-w">W</span><span class="match-w">W</span><span class="match-l">L</span><span class="match-l">L</span>
-                                    </div>
                                 </div>
                             </div>
                         </div>
