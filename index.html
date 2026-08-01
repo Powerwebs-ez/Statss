@@ -24,7 +24,6 @@
             cursor: crosshair !important;
         }
 
-        /* 8. Egyedi Neon Scrollbar */
         ::-webkit-scrollbar {
             width: 8px;
         }
@@ -47,7 +46,6 @@
             padding: 40px 20px;
         }
 
-        /* Sci-Fi / Cyberpunk Scanlines & Grid Overlay */
         body::before {
             content: " ";
             display: block;
@@ -59,7 +57,6 @@
             pointer-events: none;
         }
 
-        /* 6. Fényes Egérkövető Fókusz (Spotlight Effect) */
         .spotlight {
             position: fixed;
             top: 0;
@@ -81,7 +78,6 @@
             z-index: 0;
         }
 
-        /* Matrix Rain Canvas */
         #matrix-canvas {
             position: fixed;
             top: 0;
@@ -104,7 +100,6 @@
             z-index: 2;
         }
 
-        /* Header & Avatar Redesign */
         header {
             text-align: center;
             margin-bottom: 35px;
@@ -168,7 +163,6 @@
             box-shadow: 0 0 20px rgba(191, 0, 255, 0.25);
         }
 
-        /* Audio Player Bar */
         .transparent-player {
             background: var(--glass-bg);
             border: 1px solid var(--glass-border);
@@ -271,7 +265,6 @@
             text-shadow: 0 0 15px var(--accent-neon);
         }
 
-        /* 2. Interaktív Hangerőszabályzó Csúszka stílus */
         .volume-control-wrapper {
             display: flex;
             align-items: center;
@@ -299,7 +292,6 @@
             cursor: crosshair;
         }
 
-        /* Navigation Buttons Bar */
         .interactive-bar {
             display: flex;
             justify-content: center;
@@ -343,7 +335,6 @@
             box-shadow: 0 15px 35px rgba(0,0,0,0.6), 0 0 30px var(--accent-glow);
         }
 
-        /* 9. Kattintáskor Felszabaduló Shockwave (Lökéshullám) */
         .ripple {
             position: absolute;
             border-radius: 50%;
@@ -360,7 +351,6 @@
             100% { transform: scale(5); opacity: 0; }
         }
 
-        /* Main Content Container */
         .content-panel {
             background: var(--glass-bg);
             backdrop-filter: blur(30px);
@@ -373,7 +363,6 @@
             overflow: hidden;
         }
 
-        /* 5. HUD / Sci-Fi Sarokdekorációk a panelen */
         .content-panel::before, .content-panel::after {
             content: "";
             position: absolute;
@@ -401,7 +390,6 @@
             margin-bottom: 30px;
         }
 
-        /* Dashboard Elements */
         .stats-dashboard {
             display: flex;
             flex-direction: column;
@@ -484,22 +472,6 @@
             gap: 16px;
         }
 
-        .stats-bottom-row {
-            background: rgba(12, 6, 22, 0.7);
-            border: 1px solid rgba(191, 0, 255, 0.15);
-            border-radius: 18px;
-            padding: 24px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.4);
-            backdrop-filter: blur(15px);
-            transition: border-color 0.3s, box-shadow 0.3s;
-        }
-
-        .stats-bottom-row:hover {
-            border-color: rgba(191, 0, 255, 0.6);
-            box-shadow: 0 20px 45px rgba(0,0,0,0.5), 0 0 20px rgba(191, 0, 255, 0.2);
-        }
-
-        /* Settings Grid Panel */
         .settings-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -610,7 +582,6 @@
                 <button class="control-icon-btn" onclick="skipTime(-10)" title="10mp Vissza">⏮</button>
                 <button class="control-icon-btn main-play" id="play-pause-btn" onclick="togglePlay()" title="Lejátszás / Szünet">⏸</button>
                 <button class="control-icon-btn" onclick="skipTime(10)" title="10mp Előre">⏭</button>
-                <!-- 2. Interaktív Hangerőszabályzó Csúszka -->
                 <div class="volume-control-wrapper" title="Hangerő">
                     <span style="font-size: 0.8rem; color: var(--text-muted);">🔊</span>
                     <input type="range" min="0" max="1" step="0.05" value="0.5" class="volume-slider" id="volume-slider" oninput="changeVolume(this.value)">
@@ -621,11 +592,9 @@
         <div class="interactive-bar">
             <button class="action-btn active" onclick="switchTab('primary', event)">⚡ Primary Stats</button>
             <button class="action-btn" onclick="switchTab('settings', event)">⚙️ Settings</button>
-            <!-- 8. Matrix Rain Háttér Váltó Gomb -->
             <button class="action-btn" onclick="toggleMatrixRain(event)">🟣 Neon Matrix</button>
         </div>
 
-        <!-- 3D Tilt kártya konténer -->
         <div class="content-panel tilt-card" id="main-panel">
             <h2 id="panel-title">Primary Statistics</h2>
             <p id="panel-desc">Official performance overview and cyber match metrics.</p>
@@ -635,32 +604,28 @@
                     <div class="stats-top-row">
                         <div class="stats-card-box">
                             <div class="stats-card-header">
-                                <span>PROFILE</span> &bull; Powerrr666yyy
+                                <span>STEAM</span> &bull; PowerrrGETSMURF
                             </div>
                             <div class="stats-grid-2cols">
                                 <div class="stat-item-box">
-                                    <span class="stat-label">FRIENDCODE</span>
-                                    <span class="stat-val" style="font-family: monospace;">AK5QJ-D8PG</span>
+                                    <span class="stat-label">CS FRIENDCODE</span>
+                                    <span class="stat-val" style="font-family: monospace;">-</span>
                                 </div>
                                 <div class="stat-item-box">
-                                    <span class="stat-label">STATUS</span>
-                                    <span class="stat-val">Online</span>
+                                    <span class="stat-label">XP LEVEL</span>
+                                    <span class="stat-val">20</span>
                                 </div>
                                 <div class="stat-item-box">
                                     <span class="stat-label">REGISTERED</span>
-                                    <span class="stat-val">Dec 23, 2017</span>
-                                </div>
-                                <div class="stat-item-box">
-                                    <span class="stat-label">LEVEL</span>
-                                    <span class="stat-val">193</span>
-                                </div>
-                                <div class="stat-item-box">
-                                    <span class="stat-label">COMMENDATIONS</span>
-                                    <span class="stat-val">77 😊 70 👑 70 🎓</span>
+                                    <span class="stat-val">May 25, 2026</span>
                                 </div>
                                 <div class="stat-item-box">
                                     <span class="stat-label">PLAYTIME</span>
-                                    <span class="stat-val">3,431h</span>
+                                    <span class="stat-val">140h</span>
+                                </div>
+                                <div class="stat-item-box">
+                                    <span class="stat-label">COMMENDATIONS</span>
+                                    <span class="stat-val">14 😊 15 👑 🎓</span>
                                 </div>
                             </div>
                         </div>
@@ -670,20 +635,19 @@
                                 <span>PERFORMANCE</span> &bull; Core Metrics
                             </div>
                             <div class="stats-grid-3cols" style="margin-bottom: 16px;">
-                                <div class="stat-item-box"><span class="stat-label">AIM</span><span class="stat-val">83.9</span></div>
-                                <div class="stat-item-box"><span class="stat-label">CLUTCH</span><span class="stat-val neon">+10.7</span></div>
-                                <div class="stat-item-box"><span class="stat-label">RATING</span><span class="stat-val neon">+2.3</span></div>
-                                <div class="stat-item-box"><span class="stat-label">TIME TO DMG</span><span class="stat-val">629ms</span></div>
-                                <div class="stat-item-box"><span class="stat-label">WINRATE</span><span class="stat-val">43%</span></div>
-                                <div class="stat-item-box"><span class="stat-label">UTILITY</span><span class="stat-val">51.6</span></div>
+                                <div class="stat-item-box"><span class="stat-label">AIM</span><span class="stat-val">89.0</span></div>
+                                <div class="stat-item-box"><span class="stat-label">CLUTCH</span><span class="stat-val neon">+11.1</span></div>
+                                <div class="stat-item-box"><span class="stat-label">RATING</span><span class="stat-val neon">+1.1</span></div>
+                                <div class="stat-item-box"><span class="stat-label">WINRATE</span><span class="stat-val">55% / 53%</span></div>
+                                <div class="stat-item-box"><span class="stat-label">UTILITY</span><span class="stat-val">40.1</span></div>
+                                <div class="stat-item-box"><span class="stat-label">OPENING</span><span class="stat-val neon">-0.9</span></div>
                             </div>
                             <div class="stats-grid-3cols">
-                                <div class="stat-item-box"><span class="stat-label">OPENING</span><span class="stat-val neon">+2.5</span></div>
-                                <div class="stat-item-box"><span class="stat-label">PARTY</span><span class="stat-val">2.55</span></div>
-                                <div class="stat-item-box"><span class="stat-label">AVG DMG</span><span class="stat-val">9.2</span></div>
-                                <div class="stat-item-box"><span class="stat-label">MATCHES</span><span class="stat-val">653</span></div>
-                                <div class="stat-item-box"><span class="stat-label">KD</span><span class="stat-val">1.12</span></div>
-                                <div class="stat-item-box"><span class="stat-label">PEAK RATING</span><span class="stat-val neon">24,886</span></div>
+                                <div class="stat-item-box"><span class="stat-label">PARTY</span><span class="stat-val">2.33</span></div>
+                                <div class="stat-item-box"><span class="stat-label">MATCHES</span><span class="stat-val">55 / 9.1%</span></div>
+                                <div class="stat-item-box"><span class="stat-label">POSITION</span><span class="stat-val">46.0</span></div>
+                                <div class="stat-item-box"><span class="stat-label">KD</span><span class="stat-val">1.31</span></div>
+                                <div class="stat-item-box" style="grid-column: span 2;"><span class="stat-label">PEAK RATING</span><span class="stat-val neon">22,505</span></div>
                             </div>
                         </div>
                     </div>
@@ -693,7 +657,6 @@
     </div>
 
     <script>
-        // 9. Lökéshullám (Shockwave) effekt kattintásra gombokon / interaktív elemeken
         document.addEventListener('click', function(e) {
             const target = e.target.closest('.action-btn, .copy-btn');
             if (target) {
@@ -715,7 +678,6 @@
             }
         });
 
-        // 6. Spotlight egérkövető pozíció frissítése
         const spotlight = document.getElementById('spotlight');
         window.addEventListener('mousemove', (e) => {
             const x = (e.clientX / window.innerWidth) * 100;
@@ -724,7 +686,6 @@
             spotlight.style.setProperty('--mouse-y', `${y}%`);
         });
 
-        // 3D Tilt / Parallaxis Kártyák kezelése
         const tiltCard = document.getElementById('main-panel');
         document.addEventListener('mousemove', (e) => {
             const rect = tiltCard.getBoundingClientRect();
@@ -779,7 +740,6 @@
             }
         }
 
-        // 2. Interaktív hangerő funkció
         function changeVolume(val) {
             music.volume = val;
         }
@@ -812,7 +772,6 @@
             return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
         }
 
-        // Background Particles Canvas
         const canvas = document.getElementById('bg-canvas');
         const ctx = canvas.getContext('2d');
 
@@ -853,7 +812,6 @@
 
         animate();
 
-        // 8. Matrix Rain logika (Lilás Synthwave kiadás)
         const matrixCanvas = document.getElementById('matrix-canvas');
         const mCtx = matrixCanvas.getContext('2d');
         let matrixActive = false;
@@ -926,32 +884,28 @@
                         <div class="stats-top-row">
                             <div class="stats-card-box">
                                 <div class="stats-card-header">
-                                    <span>PROFILE</span> &bull; Powerrr666yyy
+                                    <span>STEAM</span> &bull; PowerrrGETSMURF
                                 </div>
                                 <div class="stats-grid-2cols">
                                     <div class="stat-item-box">
-                                        <span class="stat-label">FRIENDCODE</span>
-                                        <span class="stat-val" style="font-family: monospace;">AK5QJ-D8PG</span>
+                                        <span class="stat-label">CS FRIENDCODE</span>
+                                        <span class="stat-val" style="font-family: monospace;">-</span>
                                     </div>
                                     <div class="stat-item-box">
-                                        <span class="stat-label">STATUS</span>
-                                        <span class="stat-val">Online</span>
+                                        <span class="stat-label">XP LEVEL</span>
+                                        <span class="stat-val">20</span>
                                     </div>
                                     <div class="stat-item-box">
                                         <span class="stat-label">REGISTERED</span>
-                                        <span class="stat-val">Dec 23, 2017</span>
-                                    </div>
-                                    <div class="stat-item-box">
-                                        <span class="stat-label">LEVEL</span>
-                                        <span class="stat-val">193</span>
-                                    </div>
-                                    <div class="stat-item-box">
-                                        <span class="stat-label">COMMENDATIONS</span>
-                                        <span class="stat-val">77 😊 70 👑 70 🎓</span>
+                                        <span class="stat-val">May 25, 2026</span>
                                     </div>
                                     <div class="stat-item-box">
                                         <span class="stat-label">PLAYTIME</span>
-                                        <span class="stat-val">3,431h</span>
+                                        <span class="stat-val">140h</span>
+                                    </div>
+                                    <div class="stat-item-box">
+                                        <span class="stat-label">COMMENDATIONS</span>
+                                        <span class="stat-val">14 😊 15 👑 🎓</span>
                                     </div>
                                 </div>
                             </div>
@@ -960,20 +914,19 @@
                                     <span>PERFORMANCE</span> &bull; Core Metrics
                                 </div>
                                 <div class="stats-grid-3cols" style="margin-bottom: 16px;">
-                                    <div class="stat-item-box"><span class="stat-label">AIM</span><span class="stat-val">83.9</span></div>
-                                    <div class="stat-item-box"><span class="stat-label">CLUTCH</span><span class="stat-val neon">+10.7</span></div>
-                                    <div class="stat-item-box"><span class="stat-label">RATING</span><span class="stat-val neon">+2.3</span></div>
-                                    <div class="stat-item-box"><span class="stat-label">TIME TO DMG</span><span class="stat-val">629ms</span></div>
-                                    <div class="stat-item-box"><span class="stat-label">WINRATE</span><span class="stat-val">43%</span></div>
-                                    <div class="stat-item-box"><span class="stat-label">UTILITY</span><span class="stat-val">51.6</span></div>
+                                    <div class="stat-item-box"><span class="stat-label">AIM</span><span class="stat-val">89.0</span></div>
+                                    <div class="stat-item-box"><span class="stat-label">CLUTCH</span><span class="stat-val neon">+11.1</span></div>
+                                    <div class="stat-item-box"><span class="stat-label">RATING</span><span class="stat-val neon">+1.1</span></div>
+                                    <div class="stat-item-box"><span class="stat-label">WINRATE</span><span class="stat-val">55% / 53%</span></div>
+                                    <div class="stat-item-box"><span class="stat-label">UTILITY</span><span class="stat-val">40.1</span></div>
+                                    <div class="stat-item-box"><span class="stat-label">OPENING</span><span class="stat-val neon">-0.9</span></div>
                                 </div>
                                 <div class="stats-grid-3cols">
-                                    <div class="stat-item-box"><span class="stat-label">OPENING</span><span class="stat-val neon">+2.5</span></div>
-                                    <div class="stat-item-box"><span class="stat-label">PARTY</span><span class="stat-val">2.55</span></div>
-                                    <div class="stat-item-box"><span class="stat-label">AVG DMG</span><span class="stat-val">9.2</span></div>
-                                    <div class="stat-item-box"><span class="stat-label">MATCHES</span><span class="stat-val">653</span></div>
-                                    <div class="stat-item-box"><span class="stat-label">KD</span><span class="stat-val">1.12</span></div>
-                                    <div class="stat-item-box"><span class="stat-label">PEAK RATING</span><span class="stat-val neon">24,886</span></div>
+                                    <div class="stat-item-box"><span class="stat-label">PARTY</span><span class="stat-val">2.33</span></div>
+                                    <div class="stat-item-box"><span class="stat-label">MATCHES</span><span class="stat-val">55 / 9.1%</span></div>
+                                    <div class="stat-item-box"><span class="stat-label">POSITION</span><span class="stat-val">46.0</span></div>
+                                    <div class="stat-item-box"><span class="stat-label">KD</span><span class="stat-val">1.31</span></div>
+                                    <div class="stat-item-box" style="grid-column: span 2;"><span class="stat-label">PEAK RATING</span><span class="stat-val neon">22,505</span></div>
                                 </div>
                             </div>
                         </div>
