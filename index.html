@@ -13,7 +13,7 @@
             --secondary-neon: #ff007f;
             --secondary-glow: rgba(255, 0, 127, 0.45);
             --faceit-orange: #ff5500;
-            --glass-bg: rgba(18, 10, 30, 0.85);
+            --glass-bg: rgba(18, 10, 30, 0.80);
             --glass-border: rgba(191, 0, 255, 0.25);
             --text-main: #f5f0f8;
             --text-muted: #9c8aa7;
@@ -48,6 +48,28 @@
             padding: 30px;
         }
 
+        /* GIF Background with smoothing & blur filter to fix pixelation */
+        .gif-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 0;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .gif-background img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            /* A CSS varázslat: elsimítja a pixeleket, sötétíti és lilás tónusba mossa a hátteret */
+            filter: blur(12px) brightness(0.35) saturate(1.4) contrast(1.2);
+            transform: scale(1.1); /* Eltünteti a blur miatti széleket */
+            image-rendering: auto;
+        }
+
         /* Scanline overlay */
         body::before {
             content: " ";
@@ -78,7 +100,7 @@
             width: 100vw;
             height: 100vh;
             pointer-events: none;
-            z-index: 0;
+            z-index: 1;
         }
 
         /* Main Dashboard Grid layout */
@@ -516,7 +538,7 @@
             top: 0; left: 0;
             width: 100vw; height: 100vh;
             pointer-events: none;
-            z-index: 0;
+            z-index: 1;
             opacity: 0;
             transition: opacity 0.4s ease;
         }
@@ -526,6 +548,11 @@
     </style>
 </head>
 <body>
+
+    <!-- Atomic GIF Background with anti-pixelation filter -->
+    <div class="gif-background">
+        <img src="atomic.gif" alt="Atomic Background">
+    </div>
 
     <div class="spotlight" id="spotlight"></div>
     <canvas id="bg-canvas"></canvas>
