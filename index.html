@@ -474,69 +474,56 @@
             opacity: 0.25;
         }
 
-        /* --- BLACK HOLE & WIDE HORROR ATOMIC DROP STÍLUSOK --- */
+        /* --- ERŐSÍTETT EREDETI ATOMIC DROP EFFEKT (NINCS FEKETE HÁTTÉR) --- */
         #atomic-text {
             position: fixed;
             top: 50%;
             left: 50%;
-            transform: translate(-50%, -50%) scale(0.3);
+            transform: translate(-50%, -50%) scale(0.2);
             font-family: 'Creepster', cursive, sans-serif;
-            font-size: 10rem;
-            color: #e1bee7;
+            font-size: 13rem; /* Megnövelt méret */
+            color: #ffb3ff;
             text-transform: uppercase;
-            letter-spacing: 25px;
+            letter-spacing: 30px;
             transform-origin: center;
             z-index: 10000;
             opacity: 0;
             pointer-events: none;
             white-space: nowrap;
-            text-shadow: 0 0 10px rgba(138, 43, 226, 1), 
-                         0 0 30px rgba(75, 0, 130, 0.9),
-                         0 0 60px rgba(40, 0, 70, 0.8),
+            text-shadow: 0 0 20px rgba(191, 0, 255, 1), 
+                         0 0 50px rgba(255, 0, 127, 1),
+                         0 0 90px rgba(191, 0, 255, 0.9),
                          5px 5px 0px #000;
         }
 
-        #black-hole-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background-color: #000;
-            z-index: 9999;
-            pointer-events: none;
-            clip-path: circle(150% at 50% 50%);
-        }
-
-        @keyframes horrorPopWide {
+        @keyframes horrorPopWideStrong {
             0% {
-                transform: translate(-50%, -50%) scale(0.1) scaleX(1.5) skewX(-20deg);
+                transform: translate(-50%, -50%) scale(0.05) scaleX(1.8) skewX(-25deg);
                 opacity: 0;
-                filter: blur(15px);
+                filter: blur(20px);
             }
-            40% {
+            35% {
                 opacity: 1;
                 filter: blur(0px);
             }
-            70% {
-                transform: translate(-50%, -50%) scale(1.2) scaleX(1.3) skewX(10deg);
+            65% {
+                transform: translate(-50%, -50%) scale(1.35) scaleX(1.4) skewX(12deg);
             }
             100% {
-                transform: translate(-50%, -50%) scale(1) scaleX(1.2) skewX(0deg);
+                transform: translate(-50%, -50%) scale(1.1) scaleX(1.25) skewX(0deg);
                 opacity: 1;
                 filter: blur(0px);
             }
         }
 
         .show-atomic {
-            animation: horrorPopWide 0.4s cubic-bezier(0, 2, 1, 1) forwards;
+            animation: horrorPopWideStrong 0.5s cubic-bezier(0, 2.2, 1, 1) forwards;
         }
     </style>
 </head>
 <body>
 
-    <!-- Fekete lyuk overlay és az ATOMIC felirat -->
-    <div id="black-hole-overlay"></div>
+    <!-- ATOMIC felirat (fekete lyuk overlay eltávolítva) -->
     <div id="atomic-text">ATOMIC</div>
 
     <div class="gif-background">
@@ -738,34 +725,18 @@
             }
         });
 
-        // --- AUTOMATIKUS BLACK HOLE & WIDE HORROR ATOMIC DROP LOGIKA ---
-        const overlay = document.getElementById('black-hole-overlay');
+        // --- ERŐSÍTETT EREDETI ATOMIC DROP LOGIKA (FEKETE HÁTTÉR NÉLKÜL) ---
         const atomicText = document.getElementById('atomic-text');
 
         function triggerAtomicDropEffect() {
-            overlay.style.pointerEvents = 'auto';
+            atomicText.classList.remove('show-atomic');
+            void atomicText.offsetWidth; // Reflow kényszerítése az animáció újraincidentálásához
+            atomicText.classList.add('show-atomic');
 
-            // 1. Fázis: Zoom-out (összehúzódás egy pontba)
-            overlay.style.transition = 'clip-path 0.5s cubic-bezier(0.77, 0, 0.175, 1)';
-            overlay.style.clipPath = 'circle(0% at 50% 50%)';
-
-            // 2. Fázis: Sötétség alatt berobban az ATOMIC felirat
+            // Automatikus eltűnés az animáció lefutása után (0.7 másodperc múlva)
             setTimeout(() => {
-                atomicText.classList.add('show-atomic');
-
-                // 3. Fázis: Kinyílás
-                setTimeout(() => {
-                    overlay.style.transition = 'clip-path 0.4s cubic-bezier(0, 1.8, 1, 1)';
-                    overlay.style.clipPath = 'circle(150% at 50% 50%)';
-
-                    setTimeout(() => {
-                        overlay.style.pointerEvents = 'none';
-                        atomicText.classList.remove('show-atomic');
-                    }, 400);
-
-                }, 500);
-
-            }, 500);
+                atomicText.classList.remove('show-atomic');
+            }, 700);
         }
 
         function seekAudio(e) {
