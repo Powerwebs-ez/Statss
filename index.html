@@ -1,4 +1,4 @@
-html_content = """<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -543,6 +543,30 @@ html_content = """<!DOCTYPE html>
         #matrix-canvas.active {
             opacity: 0.25;
         }
+    
+        @keyframes bassPulse {
+            0% { transform: scale(1); filter: brightness(1); }
+            10% { transform: scale(1.02); filter: brightness(1.4) drop-shadow(0 0 30px var(--accent-neon)); }
+            30% { transform: scale(0.99); filter: brightness(0.9); }
+            50% { transform: scale(1.01); filter: brightness(1.2); }
+            100% { transform: scale(1); filter: brightness(1); }
+        }
+        .bass-drop-active {
+            animation: bassPulse 0.6s ease-in-out;
+        }
+        
+        @keyframes flashOverlay {
+            0% { background: rgba(191, 0, 255, 0.4); }
+            100% { background: rgba(191, 0, 255, 0); }
+        }
+        .flash-screen {
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vw;
+            pointer-events: none;
+            z-index: 998;
+            animation: flashOverlay 0.5s ease-out forwards;
+        }
+
     </style>
 </head>
 <body>
@@ -566,7 +590,7 @@ html_content = """<!DOCTYPE html>
                 <div>
                     <h1>Powerrr666yyy</h1>
                     <div class="sidebar-badges" style="margin-top: 10px;">
-                        <span class="badge">⚡ ELITE</span>
+                        <span class="badge">⚡ EASY</span>
                         <span class="badge">One tap Enjoyer</span>
                     </div>
                 </div>
@@ -726,6 +750,8 @@ html_content = """<!DOCTYPE html>
             music.volume = val;
         }
 
+        let bassHitTriggered = false;
+        
         music.addEventListener('timeupdate', () => {
             if (!isNaN(music.duration)) {
                 const progressPercent = (music.currentTime / music.duration) * 100;
@@ -733,7 +759,36 @@ html_content = """<!DOCTYPE html>
                 currentTimeEl.textContent = formatTime(music.currentTime);
                 durationTimeEl.textContent = formatTime(music.duration);
             }
+
+            // Bass drop effect around 18 seconds (reset if music loops or rewinds before 17s)
+            if (music.currentTime < 17) {
+                bassHitTriggered = false;
+            }
+
+            if (!bassHitTriggered && music.currentTime >= 18.0 && music.currentTime < 18.5) {
+                bassHitTriggered = true;
+                triggerBassDropEffect();
+            }
         });
+
+        function triggerBassDropEffect() {
+            // Apply shockwave to dashboard container
+            const container = document.querySelector('.dashboard-container');
+            if (container) {
+                container.classList.add('bass-drop-active');
+                setTimeout(() => {
+                    container.classList.remove('bass-drop-active');
+                }, 600);
+            }
+
+            // Flash screen effect
+            const flash = document.createElement('div');
+            flash.className = 'flash-screen';
+            document.body.appendChild(flash);
+            setTimeout(() => {
+                flash.remove();
+            }, 500);
+        }
 
         function seekAudio(e) {
             const width = progressContainer.clientWidth;
@@ -1020,6 +1075,3 @@ echo "Powerrr666yyy CFG Loaded Successfully!"
     </script>
 </body>
 </html>
-"""
-with open("powerrr_command_center_v2.html", "w", encoding="utf-8") as f:
-    f.write(html_content)
