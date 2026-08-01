@@ -507,7 +507,7 @@
             word-break: break-all;
         }
 
-        .copy-trigger {
+        .copy-trigger, .download-trigger {
             background: rgba(191, 0, 255, 0.2);
             border: 1px solid var(--accent-neon);
             color: #f0c2ff;
@@ -521,8 +521,11 @@
             transition: all 0.2s;
             text-transform: uppercase;
             align-self: flex-start;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
         }
-        .copy-trigger:hover {
+        .copy-trigger:hover, .download-trigger:hover {
             background: var(--accent-neon);
             color: #07030f;
             box-shadow: 0 0 20px var(--accent-glow);
@@ -552,7 +555,6 @@
     <canvas id="bg-canvas"></canvas>
     <canvas id="matrix-canvas"></canvas>
     
-    <!-- Az új zene.mp3 automatikusan betöltődik -->
     <audio id="bg-music" src="zene.mp3" loop autoplay></audio>
 
     <div class="dashboard-container">
@@ -597,7 +599,7 @@
 
             <div class="sidebar-nav">
                 <button class="nav-btn active" onclick="switchView('stats', event)">⚡ Command Stats</button>
-                <button class="nav-btn" onclick="switchView('settings', event)">⚙️ Configuration</button>
+                <button class="nav-btn" onclick="switchView('settings', event)">⚙️ Settingse</button>
                 <button class="nav-btn" onclick="toggleMatrixRain(event)">🟣 Neon Matrix</button>
             </div>
         </aside>
@@ -904,7 +906,7 @@
                     </div>
                 `;
             } else if (viewType === 'settings') {
-                viewTitle.innerHTML = "<span>⚙️</span> Player Configuration & Setup";
+                viewTitle.innerHTML = "<span>⚙️</span> Player Settingse & Setup";
                 viewContent.innerHTML = `
                     <div class="settings-container">
                         <div class="setting-box">
@@ -919,6 +921,20 @@
                             <div class="crosshair-code" id="ch-text">CSGO-JaEHu-LMuQP-8jUiN-3Xsbf-S5LsE</div>
                             <button class="copy-trigger" onclick="copyCrosshair()">Copy Code</button>
                         </div>
+                        <div class="setting-box" style="grid-column: 1 / -1;">
+                            <h3>CS2 Config (.cfg) Letöltés</h3>
+                            <div class="setting-row"><span>Tartalmazza az összes egyedi bindot, érzékenységet és beállítást:</span></div>
+                            <div class="crosshair-code" style="max-height: 100px; overflow-y: auto;">
+sensitivity "1.28"
+zoom_sensitivity_ratio "1.0"
+m_rawinput "1"
+fps_max "400"
+bind "MOUSE1" "+attack"
+bind "SPACE" "+jump"
+bind "CTRL" "+duck"
+            </div>
+                            <button class="download-trigger" onclick="downloadConfig()">Download CFG File</button>
+                        </div>
                     </div>
                 `;
             }
@@ -931,6 +947,29 @@
                 btn.textContent = "Copied!";
                 setTimeout(() => btn.textContent = "Copy Code", 2000);
             });
+        }
+
+        function downloadConfig() {
+            const cfgContent = `// Powerrr666yyy CS2 Config
+sensitivity "1.28"
+zoom_sensitivity_ratio "1.0"
+m_rawinput "1"
+fps_max "400"
+bind "MOUSE1" "+attack"
+bind "SPACE" "+jump"
+bind "CTRL" "+duck"
+bind "SHIFT" "+sprint"
+echo "Powerrr666yyy CFG Loaded Successfully!"
+`;
+            const blob = new Blob([cfgContent], { type: 'text/plain' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'powerrr_config.cfg';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            window.URL.revokeObjectURL(url);
         }
     </script>
 </body>
