@@ -707,6 +707,7 @@
 
             <div class="sidebar-nav">
                 <button class="nav-btn active" onclick="switchView('stats', event)">⚡ Command Stats</button>
+                <button class="nav-btn" onclick="switchView('aimlabs', event)">🎯 Aimlabs Routine</button>
                 <button class="nav-btn" onclick="switchView('settings', event)">⚙️ Settings</button>
                 <button class="nav-btn" onclick="switchView('peripherals', event)">🖱️ Peripherals</button>
                 <button class="nav-btn" onclick="switchView('pc', event)">💻 PC Setup</button>
@@ -1057,6 +1058,35 @@
                                 <img src="sslvl.jpg" alt="Powerrr666yyy Level Banner">
                                 <div class="banner-badge-overlay">
                                     <span class="banner-title-text">⚡ COMMAND CENTER // LEVEL BANNER</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            } else if (viewType === 'aimlabs') {
+                viewTitle.innerHTML = "<span>🎯</span> CS2 Aim Routine & Aimlabs Stats";
+                viewContent.innerHTML = `
+                    <div class="stats-grid-main">
+                        <div class="stat-card" style="grid-column: 1 / -1;">
+                            <div class="card-title-bar">
+                                <span>AIMLABS &bull; DAILY TRAINING ROUTINE</span>
+                                <span style="font-size: 0.65rem; background: rgba(191,0,255,0.2); padding: 2px 8px; border-radius: 4px; color: #f0c2ff; border: 1px solid var(--accent-neon);">SCHEDULE</span>
+                            </div>
+                            <div class="card-metrics-grid cols-3" style="margin-bottom: 15px;">
+                                <div class="metric-box"><span class="metric-label">STRAFE TRACK</span><span class="metric-value neon-purple">10 minute</span></div>
+                                <div class="metric-box"><span class="metric-label">GRIDSHOT</span><span class="metric-value neon-purple">20 minute</span></div>
+                                <div class="metric-box"><span class="metric-label">MICROSHOT</span><span class="metric-value neon-purple">15 minute</span></div>
+                                <div class="metric-box"><span class="metric-label">SPOOTWAY</span><span class="metric-value neon-purple">10 minute</span></div>
+                                <div class="metric-box"><span class="metric-label">SIXSHOT</span><span class="metric-value neon-purple">15 minute</span></div>
+                                <div class="metric-box"><span class="metric-label">TOTAL TIME</span><span class="metric-value neon-purple">70 mins/day</span></div>
+                            </div>
+                        </div>
+
+                        <div class="stat-card-image-banner">
+                            <div class="banner-image-container" style="height: 240px;">
+                                <img src="aimh.png" alt="Aimlabs Clock and Stats">
+                                <div class="banner-badge-overlay">
+                                    <span class="banner-title-text">🎯 AIMLABS // PERFORMANCE CLOCK & STATS</span>
                                 </div>
                             </div>
                         </div>
