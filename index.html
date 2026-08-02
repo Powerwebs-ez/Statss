@@ -13,6 +13,8 @@
             --secondary-neon: #ff007f;
             --secondary-glow: rgba(255, 0, 127, 0.45);
             --faceit-orange: #ff5500;
+            --danger-red: #ff3333;
+            --danger-glow: rgba(255, 51, 51, 0.45);
             --glass-bg: rgba(10, 5, 20, 0.50);
             --glass-border: rgba(191, 0, 255, 0.35);
             --text-main: #f5f0f8;
@@ -401,12 +403,12 @@
         }
 
         .stat-card.faceit-highlight {
-            border-color: rgba(191, 0, 255, 0.45);
-            background: linear-gradient(135deg, rgba(12, 6, 25, 0.5) 0%, rgba(40, 10, 60, 0.3) 100%);
+            border-color: rgba(255, 51, 51, 0.45);
+            background: linear-gradient(135deg, rgba(20, 5, 10, 0.55) 0%, rgba(40, 10, 20, 0.3) 100%);
         }
         .stat-card.faceit-highlight:hover {
-            border-color: var(--accent-neon);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.4), 0 0 30px var(--accent-glow);
+            border-color: var(--danger-red);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4), 0 0 30px var(--danger-glow);
         }
 
         .card-title-bar {
@@ -461,7 +463,15 @@
             text-shadow: 0 0 8px rgba(255, 85, 0, 0.5);
         }
 
-        /* --- ÚJ KÉP DESIGN (sslvl.jpg) --- */
+        .metric-value.danger-red {
+            color: var(--danger-red);
+            text-shadow: 0 0 10px var(--danger-glow);
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.8rem;
+            letter-spacing: 0.5px;
+        }
+
+        /* --- KÉP BANNER DIZÁJN (sslvl.jpg) --- */
         .stat-card-image-banner {
             grid-column: 1 / -1;
             background: rgba(12, 6, 25, 0.6);
@@ -747,13 +757,13 @@
 
                         <div class="stat-card faceit-highlight" style="grid-column: 1 / -1;">
                             <div class="card-title-bar">
-                                <span>FACEIT &bull; -</span>
-                                <span style="font-size: 0.65rem; background: rgba(191,0,255,0.2); padding: 2px 8px; border-radius: 4px; color: #f0c2ff; border: 1px solid var(--accent-neon);">super_match</span>
+                                <span>FACEIT &bull; <span style="color: var(--danger-red);">Smurfing Banned</span></span>
+                                <span style="font-size: 0.65rem; background: rgba(255,51,51,0.2); padding: 2px 8px; border-radius: 4px; color: #ff9999; border: 1px solid var(--danger-red);">BANNED</span>
                             </div>
                             <div class="card-metrics-grid cols-3" style="margin-bottom: 15px;">
                                 <div class="metric-box"><span class="metric-label">REGISTERED</span><span class="metric-value">Jul 08, 2025</span></div>
                                 <div class="metric-box"><span class="metric-label">ELO</span><span class="metric-value neon-orange">2231 🟠</span></div>
-                                <div class="metric-box"><span class="metric-label">PEAK ELO</span><span class="metric-value neon-orange">2342 🟠</span></div>
+                                <div class="metric-box"><span class="metric-label">PEAK ELO</span><span class="metric-value neon-orange">2451 🟠</span></div>
                                 <div class="metric-box"><span class="metric-label">WINRATE</span><span class="metric-value">76.34%</span></div>
                                 <div class="metric-box"><span class="metric-label">HS%</span><span class="metric-value">87%</span></div>
                                 <div class="metric-box"><span class="metric-label">ADR</span><span class="metric-value">86</span></div>
@@ -764,11 +774,10 @@
                                 <div class="metric-box"><span class="metric-label">KD</span><span class="metric-value">1.2</span></div>
                                 <div class="metric-box"><span class="metric-label">UDR</span><span class="metric-value">2.4</span></div>
                                 <div class="metric-box"><span class="metric-label">RECENT</span><span class="metric-value" style="color: #f0c2ff; letter-spacing: 2px;">LLLWL</span></div>
-                                <div class="metric-box"><span class="metric-label">LAST MATCH</span><span class="metric-value">Jul 28, 2026</span></div>
+                                <div class="metric-box"><span class="metric-label">STATUS</span><span class="metric-value danger-red">🚫 BANNED</span></div>
                             </div>
                         </div>
 
-                        <!-- ÚJ KÉP BANNER DIZÁJN (sslvl.jpg) -->
                         <div class="stat-card-image-banner">
                             <div class="banner-image-container">
                                 <img src="sslvl.jpg" alt="Powerrr666yyy Level Banner">
@@ -1022,13 +1031,13 @@
 
                         <div class="stat-card faceit-highlight" style="grid-column: 1 / -1;">
                             <div class="card-title-bar">
-                                <span>FACEIT &bull; -</span>
-                                <span style="font-size: 0.65rem; background: rgba(191,0,255,0.2); padding: 2px 8px; border-radius: 4px; color: #f0c2ff; border: 1px solid var(--accent-neon);">super_match</span>
+                                <span>FACEIT &bull; <span style="color: var(--danger-red);">Smurfing Banned</span></span>
+                                <span style="font-size: 0.65rem; background: rgba(255,51,51,0.2); padding: 2px 8px; border-radius: 4px; color: #ff9999; border: 1px solid var(--danger-red);">BANNED</span>
                             </div>
                             <div class="card-metrics-grid cols-3" style="margin-bottom: 15px;">
                                 <div class="metric-box"><span class="metric-label">REGISTERED</span><span class="metric-value">Jul 08, 2025</span></div>
                                 <div class="metric-box"><span class="metric-label">ELO</span><span class="metric-value neon-orange">2231 🟠</span></div>
-                                <div class="metric-box"><span class="metric-label">PEAK ELO</span><span class="metric-value neon-orange">2342 🟠</span></div>
+                                <div class="metric-box"><span class="metric-label">PEAK ELO</span><span class="metric-value neon-orange">2451 🟠</span></div>
                                 <div class="metric-box"><span class="metric-label">WINRATE</span><span class="metric-value">76.34%</span></div>
                                 <div class="metric-box"><span class="metric-label">HS%</span><span class="metric-value">87%</span></div>
                                 <div class="metric-box"><span class="metric-label">ADR</span><span class="metric-value">86</span></div>
@@ -1039,7 +1048,7 @@
                                 <div class="metric-box"><span class="metric-label">KD</span><span class="metric-value">1.2</span></div>
                                 <div class="metric-box"><span class="metric-label">UDR</span><span class="metric-value">2.4</span></div>
                                 <div class="metric-box"><span class="metric-label">RECENT</span><span class="metric-value" style="color: #f0c2ff; letter-spacing: 2px;">LLLWL</span></div>
-                                <div class="metric-box"><span class="metric-label">LAST MATCH</span><span class="metric-value">Jul 28, 2026</span></div>
+                                <div class="metric-box"><span class="metric-label">STATUS</span><span class="metric-value danger-red">🚫 BANNED</span></div>
                             </div>
                         </div>
 
